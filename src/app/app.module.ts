@@ -7,6 +7,7 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+
 //modulo principale dell applicazione, 
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule, 
@@ -17,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     NavbarComponent,
     CarouselComponent
+    
   ],
   imports: [
     BrowserModule,
