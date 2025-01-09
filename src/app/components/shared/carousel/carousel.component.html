@@ -1,4 +1,4 @@
-<ngb-carousel *ngIf="images.length > 1">
+<ngb-carousel *ngIf="images.length > 1; else noMoreSlides">
   <ng-template ngbSlide *ngFor="let image of images; let i = index">
     <div class="picsum-img-wrapper">
       <img [src]="getUrlImage(image.id)" [alt]="getGeneralAlt(image)" />
@@ -10,13 +10,14 @@
   </ng-template>
 </ngb-carousel>
 
-<div
-  *ngIf="images.length === 1"
-  class="single-carousel-img parent"
-  [style.background]="'url(' + getUrlImage(images[0].id) + ')'"
->
-  <div class="carousel-caption">
-    <h3>{{ getDescription(images[0]) }}</h3>
-    <p>{{ getDescription2(images[0]) }}</p>
+<ng-template #noMoreSlides>
+  <div
+    class="single-carousel-img parent"
+    [style.background]="'url(' + getUrlImage(images[0].id) + ')'"
+  >
+    <div class="carousel-caption">
+      <h3>{{ getDescription(images[0]) }}</h3>
+      <p>{{ getDescription2(images[0]) }}</p>
+    </div>
   </div>
-</div>
+</ng-template>

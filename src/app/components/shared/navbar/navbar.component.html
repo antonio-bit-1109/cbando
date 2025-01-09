@@ -9,7 +9,7 @@
     <a class="navbar-brand" href="#">{{ titolo }}</a>
 
     <button
-      class="navbar-toggler"
+      class="navbar-toggler ms-auto me-3"
       type="button"
       data-toggle="collapse"
       data-target="#navbarNav"
@@ -48,6 +48,15 @@
           >
         </li>
       </ul>
+    </div>
+    <div>
+      <p
+        (click)="changeEvidenziato()"
+        class="m-0 pointer"
+        [ngClass]="getEvidenziato() ? 'colorato' : null"
+      >
+        Benvenuto Utente
+      </p>
     </div>
   </nav>
 </header>

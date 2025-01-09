@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Iimage } from '../../../interfaces/interfaces';
+import { Iimage } from '../../../models/image.model';
 
 @Component({
   selector: 'app-carousel',
@@ -12,6 +12,7 @@ import { Iimage } from '../../../interfaces/interfaces';
 export class CarouselComponent {
   private percorso = "../../assets/images/carousel-";
   private string = ".jpg";
+
 
   public getUrlImage(imageId: number): string {
     return `${this.percorso}${imageId}${this.string}`;
@@ -28,6 +29,7 @@ export class CarouselComponent {
   public getGeneralAlt(image: Iimage){
     return `immagine di ${image.desc}`;
   }
+
 
   images = [
     { id : 1  , desc:"piatto di pasta " , desc2 : "con pomodoro e basilico" },
