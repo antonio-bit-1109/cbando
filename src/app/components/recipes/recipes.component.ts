@@ -38,10 +38,16 @@ export class RecipesComponent {
 
   public isAvailable(isAvalaible: boolean) {
     let disponibile = '';
+    let colorFrame = '';
 
-    isAvalaible
-      ? (disponibile = 'Disponibile')
-      : (disponibile = 'Non disponibile');
-    return [disponibile, isAvalaible];
+    if (isAvalaible) {
+      disponibile = 'Disponibile';
+      colorFrame = 'green';
+    } else {
+      disponibile = 'Non Disponibile';
+      colorFrame = 'red';
+    }
+
+    return [disponibile, isAvalaible, colorFrame];
   }
 }

@@ -7,3 +7,15 @@
 .rotate {
   rotate: -10deg;
 }
+
+.txt {
+  font: normal 6em/1.1 "Fjalla One", Arial, sans-serif;
+  color: #5f5e61;
+  text-transform: uppercase;
+  //   border: 0.125em solid #5f5e61;
+  display: inline-block;
+  border-radius: 0.2em;
+  padding: 0.15em 0.15em 0.075em;
+  font-size: 1.2rem;
+  font-weight: 800;
+}
