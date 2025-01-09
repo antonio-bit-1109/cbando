@@ -6,8 +6,10 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
-
+import { RecipesComponent } from './components/recipes/recipes.component';
+import { HomeComponent } from './components/home/home.component';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
 //modulo principale dell applicazione, 
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule, 
@@ -17,14 +19,18 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [
     AppComponent,
     NavbarComponent,
-    CarouselComponent
+    CarouselComponent,
+    RecipesComponent,
+    HomeComponent
     
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule 
+    NgbModule ,
+    CardModule , 
+    ButtonModule
    
   ],
   providers: [],
