@@ -1,39 +1,39 @@
 <div class="container-fluid">
   <div class="row">
     <div
-      class="col-sm-12 col-md-6 col-lg-4 col-xl-3"
+      class="col-sm-12 col-md-6 col-lg-4 col-xl-3 focused-style"
       *ngFor="let ricetta of ricette; let i = index"
+      [ngClass]="{ 'disabled-card': !isAvailable(ricetta.published)[1] }"
     >
       <p-card
         [header]="ricetta.title"
         [subheader]="troncaDescrizione(ricetta.description, 300)"
-        class="m-3 rounded-4"
+        class="m-3 rounded-4 pointer"
       >
         <ng-template pTemplate="header">
           <img alt="Card" [src]="ricetta.image" class="rounded-4 img-style" />
         </ng-template>
-        <ng-template pTemplate="footer">
-          <div class="flex mt-1">
-            <button class="btn btn-primary d-inline-block">Cancel</button>
-            <button class="btn btn-secondary d-inline-block">Save</button>
-            <div
+
+        <div class="flex mt-1">
+          <button class="btn btn-primary d-inline-block">Cancel</button>
+          <button class="btn btn-secondary d-inline-block">Save</button>
+          <div
+            [ngStyle]="{
+              border: '0.125em solid ' + isAvailable(ricetta.published)[2]
+            }"
+            class="text-center d-block my-3 ms-5"
+          >
+            <p
               [ngStyle]="{
-                border: '0.125em solid ' + isAvailable(ricetta.published)[2]
-              }"
-              class="text-center d-inline-block my-3 ms-5"
-            >
-              <p
-                [ngStyle]="{
                   color: isAvailable(ricetta.published)[1] ? 'green' : 'red',
                 }"
-                class="txt m-0"
-              >
-                {{ isAvailable(ricetta.published)[0] }}
-              </p>
-            </div>
+              class="txt m-0"
+            >
+              {{ isAvailable(ricetta.published)[0] }}
+            </p>
           </div>
-          <p class="m-0 fw-bolder">{{ ricetta.date }}</p>
-        </ng-template>
+        </div>
+        <p class="m-0 fw-bolder">{{ ricetta.date }}</p>
       </p-card>
     </div>
   </div>
