@@ -22,6 +22,14 @@
             <span class="ms-auto">Ricetta creata in data: </span>
             <p class="m-0 fw-bolder ms-1">{{ ricetta.date }}</p>
           </div>
+          <div class="d-flex">
+            <span>Difficoltà: </span>
+          </div>
+          <img
+            class="dim-stars"
+            [src]="getDifficolta(ricetta)"
+            [alt]="getDescription(ricetta)"
+          />
         </ng-template>
       </p-card>
     </div>

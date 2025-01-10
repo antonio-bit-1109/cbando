@@ -21,6 +21,8 @@ export class DettaglioRicettaComponent implements OnInit {
   private defaultURLImage =
     'https://media.istockphoto.com/id/1396814518/it/vettoriale/immagine-in-arrivo-nessuna-foto-nessuna-immagine-in-miniatura-disponibile-illustrazione.jpg?s=2048x2048&w=is&k=20&c=JrtawqzdBNu2u9zZvkP10KLBozTxsaXPl0BxjuaUtMY=';
 
+  private percorso = 'assets/images/difficolta-';
+
   constructor() {}
 
   ngOnInit(): void {
@@ -66,5 +68,13 @@ export class DettaglioRicettaComponent implements OnInit {
       return this.defaultURLImage;
     }
     return imageURL;
+  }
+
+  public getDifficolta(ricetta: IRecipe) {
+    return this.percorso + ricetta.difficulty.toString() + '.png';
+  }
+
+  public getDescription(ricetta: IRecipe) {
+    return ricetta.description;
   }
 }
