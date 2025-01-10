@@ -10,9 +10,13 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { HomeComponent } from './components/home/home.component';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
-//modulo principale dell applicazione, 
+import { CardRicettaComponent } from './components/shared/card-ricetta/card-ricetta.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { ContattiComponent } from './components/contatti/contatti.component';
+//modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
-// in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule, 
+// in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,
 //che si tratta del modulo che ci permette di utilizzare le animazioni in Angular tramite la libreria primeng.
 
 @NgModule({
@@ -21,19 +25,21 @@ import { ButtonModule } from 'primeng/button';
     NavbarComponent,
     CarouselComponent,
     RecipesComponent,
-    HomeComponent
-    
+    HomeComponent,
+    CardRicettaComponent,
+    FooterComponent,
+    ContattiComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule ,
-    CardModule , 
-    ButtonModule
-   
+    NgbModule,
+    CardModule,
+    ButtonModule,
+    NgbCollapseModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

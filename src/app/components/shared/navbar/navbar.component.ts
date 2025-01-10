@@ -3,28 +3,36 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-navbar',
   standalone: false,
-  
+
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
 })
 export class NavbarComponent {
-   titolo = "CBando"
-   private evidenziato = false;
+  titolo = 'CBando';
+  private evidenziato = false;
+  private isCollapsed = false;
 
-   
-    public changeEvidenziato(){
-     return this.evidenziato = !this.evidenziato;
-    }
+  public changeEvidenziato() {
+    return (this.evidenziato = !this.evidenziato);
+  }
 
-    public getEvidenziato(){
-      return this.evidenziato;
-    }
+  public getEvidenziato() {
+    return this.evidenziato;
+  }
 
-  public getRandomColor(){
-    let color = "#"
-    for(let i = 0; i< 6 ; i++){
+  public getRandomColor() {
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
       color += Math.floor(Math.random() * 9).toString();
     }
     return color;
+  }
+
+  public changeCollapsed() {
+    this.isCollapsed = !this.isCollapsed;
+  }
+
+  public getCollapsed() {
+    return this.isCollapsed;
   }
 }

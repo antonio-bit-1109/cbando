@@ -26,28 +26,4 @@ export class RecipesComponent {
       },
     });
   }
-
-  // metodi utili
-  public troncaDescrizione(descrizione: string, Maxlength: number) {
-    if (descrizione.length > Maxlength) {
-      return descrizione.substring(0, Maxlength) + '...';
-    }
-
-    return descrizione;
-  }
-
-  public isAvailable(isAvalaible: boolean) {
-    let disponibile = '';
-    let colorFrame = '';
-
-    if (isAvalaible) {
-      disponibile = 'Disponibile';
-      colorFrame = 'green';
-    } else {
-      disponibile = 'Non Disponibile';
-      colorFrame = 'red';
-    }
-
-    return [disponibile, isAvalaible, colorFrame];
-  }
 }

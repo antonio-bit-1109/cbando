@@ -1,9 +1,11 @@
+@import "../../../styles/colori.scss";
+
 nav {
-  background-color: #8e201b !important;
+  background-color: $primary-color-1 !important;
 }
 
 header {
-  background-color: #8e201b !important;
+  background-color: $primary-color-1 !important;
   padding-inline-start: 15px;
 }
 
@@ -13,5 +15,5 @@ header {
 }
 
 .colorato {
-  color: white;
+  color: $g-3;
 }
