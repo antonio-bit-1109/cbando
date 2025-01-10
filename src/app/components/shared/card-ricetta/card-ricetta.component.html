@@ -21,7 +21,10 @@
 
       <ng-template pTemplate="footer">
         <div class="flex mt-1">
-          <button class="btn btn-primary d-inline-block">
+          <button
+            routerLink="/dettaglio/{{ ricettaFiglio._id }}"
+            class="btn btn-primary d-inline-block"
+          >
             Vai al dettaglio Ricetta
           </button>
           <!-- <button class="btn btn-secondary d-inline-block">Save</button> -->
