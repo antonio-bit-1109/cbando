@@ -1,7 +1,9 @@
 <div class="container-fluid">
   <div class="row">
     <div class="my-3">
-      <h2 class="text-center fw-bolder">Le nostre Ricette</h2>
+      <h2 class="text-center fw-bolder mt-5">
+        Le nostre Ricette: {{ titoloRicevuto }}
+      </h2>
     </div>
   </div>
   <div class="row">
@@ -9,7 +11,10 @@
       class="col-sm-12 col-md-6 col-lg-4 col-xl-3 focused-style"
       *ngFor="let ricetta of ricette"
     >
-      <app-card-ricetta [ricettaFiglio]="ricetta"></app-card-ricetta>
+      <app-card-ricetta
+        [ricettaFiglio]="ricetta"
+        (msgOutput)="riceviEvento($event)"
+      ></app-card-ricetta>
     </div>
   </div>
 </div>

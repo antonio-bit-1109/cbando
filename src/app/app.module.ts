@@ -16,6 +16,7 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricetta/dettaglio-ricetta.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
+
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,

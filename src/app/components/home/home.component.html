@@ -1,1 +1,12 @@
 <app-carousel></app-carousel>
+<div class="container">
+  <h2 class="text-center fs-2 mt-4">Ultime Ricette:</h2>
+  <div class="row">
+    <div
+      class="col-sm-12 col-md-6 col-lg-4 focused-style"
+      *ngFor="let ricetta of ricette"
+    >
+      <app-card-ricetta [ricettaFiglio]="ricetta"></app-card-ricetta>
+    </div>
+  </div>
+</div>
