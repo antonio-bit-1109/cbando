@@ -16,8 +16,9 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricetta/dettaglio-ricetta.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
-import { FormsModule } from '@angular/forms';
-import { RegistrationComponent } from './components/user/registration/registration.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RegistrationComponent } from './components/user/registration-template-driven/registration.component';
+import { RegistrationReactiveFormComponent } from './components/user/registration-reactive-form/registration-reactive-form.component';
 
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
@@ -37,6 +38,7 @@ import { RegistrationComponent } from './components/user/registration/registrati
     DettaglioRicettaComponent,
     RecipesListComponent,
     RegistrationComponent,
+    RegistrationReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { RegistrationComponent } from './components/user/registration/registrati
     ButtonModule,
     NgbCollapseModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

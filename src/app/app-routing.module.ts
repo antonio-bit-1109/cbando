@@ -4,7 +4,8 @@ import { HomeComponent } from './components/home/home.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricetta/dettaglio-ricetta.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
-import { RegistrationComponent } from './components/user/registration/registration.component';
+import { RegistrationComponent } from './components/user/registration-template-driven/registration.component';
+import { RegistrationReactiveFormComponent } from './components/user/registration-reactive-form/registration-reactive-form.component';
 
 const routes: Routes = [
   // rotta di default per l'index dell URL
@@ -19,7 +20,7 @@ const routes: Routes = [
       { path: '', component: RecipesListComponent, pathMatch: 'full' },
     ],
   },
-  { path: 'registrazione', component: RegistrationComponent },
+  { path: 'registrazione', component: RegistrationReactiveFormComponent },
 
   // se la rotta scelta non c'è, redirect alla home
   { path: '**', redirectTo: 'home' },

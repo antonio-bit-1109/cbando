@@ -32,3 +32,8 @@ body {
   background-color: $secondary-color-1;
   border: 1px solid $secondary-color-1;
 }
+
+.isDanger {
+  color: rgb(180, 9, 9);
+  font-size: small;
+}
