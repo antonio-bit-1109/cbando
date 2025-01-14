@@ -16,6 +16,8 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricetta/dettaglio-ricetta.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
+import { FormsModule } from '@angular/forms';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
@@ -34,6 +36,7 @@ import { RecipesListComponent } from './components/recipes/recipes-list/recipes-
     ContattiComponent,
     DettaglioRicettaComponent,
     RecipesListComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { RecipesListComponent } from './components/recipes/recipes-list/recipes-
     CardModule,
     ButtonModule,
     NgbCollapseModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

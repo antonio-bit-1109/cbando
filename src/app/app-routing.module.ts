@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricetta/dettaglio-ricetta.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 
 const routes: Routes = [
   // rotta di default per l'index dell URL
@@ -18,6 +19,7 @@ const routes: Routes = [
       { path: '', component: RecipesListComponent, pathMatch: 'full' },
     ],
   },
+  { path: 'registrazione', component: RegistrationComponent },
 
   // se la rotta scelta non c'è, redirect alla home
   { path: '**', redirectTo: 'home' },
