@@ -126,20 +126,23 @@
                     </div>
                   </div>
 
-                  <div class="form-check d-flex justify-content-center mb-5">
-                    <label class="form-check-label" for="form2Example3">
-                      I agree all statements in
-                      <a>Terms of service</a>
-                    </label>
-
-                    <input
-                      class="form-check-input me-2"
-                      type="checkbox"
-                      value=""
-                      id="form2Example3c"
-                      name="accetto"
-                      formControlName="accetto"
-                    />
+                  <div
+                    class="form-check d-flex flex-column justify-content-center mb-5"
+                  >
+                    <div>
+                      <label class="form-check-label" for="form2Example3">
+                        I agree all statements in
+                        <a>Terms of service</a>
+                      </label>
+                      <input
+                        class="form-check-input me-2"
+                        type="checkbox"
+                        value=""
+                        id="form2Example3c"
+                        name="accetto"
+                        formControlName="accetto"
+                      />
+                    </div>
                     <p
                       class="isDanger m-0"
                       *ngIf="
