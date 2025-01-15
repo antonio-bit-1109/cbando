@@ -9,4 +9,84 @@
       <app-card-ricetta [ricettaFiglio]="ricetta"></app-card-ricetta>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <!-- <button
+        class="btn btn-primary"
+        (click)="openModal(modaleUno, '4', 'nomeRandom', 'cognomeRandom')"
+      >
+        apri modale
+      </button>
+      <button
+        class="btn btn-primary"
+        (click)="
+          openModal(modaleRegistrazione, '4', 'nomeRandom', 'cognomeRandom')
+        "
+      >
+        apri modale
+      </button> -->
+    </div>
+  </div>
 </div>
+
+<!-- MODALE UNO  -->
+<ng-template #modaleUno let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Cancella prodotto</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>
+      Sei sicuro di voler cancellare il prodotto {{ idModale }} -
+      {{ nomeModale }} - {{ cognomeModale }}
+    </p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.dismiss()">
+      Annulla
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="modal.close('dato da passare')"
+      ngbAutofocus
+    >
+      Conferma
+    </button>
+  </div>
+</ng-template>
+
+<!-- MODALE DUE  -->
+<ng-template #modaleRegistrazione let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Dati utente</h4>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modal.dismiss('Cross click')"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+    <div>
+      <p>ecco i tuoi dati:</p>
+      <p>{{ datiRegistrazione.nome }}</p>
+      <p>{{ datiRegistrazione.email }}</p>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      (click)="modal.close('Close click')"
+    >
+      Close
+    </button>
+  </div>
+</ng-template>

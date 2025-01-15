@@ -19,7 +19,9 @@ import { RecipesListComponent } from './components/recipes/recipes-list/recipes-
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './components/user/registration-template-driven/registration.component';
 import { RegistrationReactiveFormComponent } from './components/user/registration-reactive-form/registration-reactive-form.component';
-
+import { PasswordModule } from 'primeng/password';
+import { DropdownModule } from 'primeng/dropdown';
+import { DividerModule } from 'primeng/divider';
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,
@@ -50,6 +52,9 @@ import { RegistrationReactiveFormComponent } from './components/user/registratio
     NgbCollapseModule,
     FormsModule,
     ReactiveFormsModule,
+    PasswordModule,
+    DropdownModule,
+    DividerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

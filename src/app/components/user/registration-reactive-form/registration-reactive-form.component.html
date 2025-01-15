@@ -86,12 +86,19 @@
                       <label class="form-label" for="form3Example4c"
                         >Password</label
                       >
-                      <input
+                      <!-- <input
                         type="password"
                         id="form3Example4c"
                         class="form-control"
                         name="password"
                         formControlName="password"
+                      /> -->
+                      <p-password
+                        class="form-control w-100"
+                        formControlName="password"
+                        [toggleMask]="true"
+                        name="password"
+                        strongRegex=" ^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$"
                       />
                       <p
                         class="isDanger m-0"

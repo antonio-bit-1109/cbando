@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
+import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-registration-reactive-form',
   standalone: false,
@@ -22,9 +23,20 @@ export class RegistrationReactiveFormComponent {
     ripetiPassword: new FormControl('', [Validators.required]),
     accetto: new FormControl(false, [Validators.requiredTrue]),
   });
+  constructor(private userService: UserService, private router: Router) {}
 
   public onSubmit() {
-    console.log(this.form);
+    console.log(this.form.value);
+
+    // all on submit invio i dati al service per gestire questi dati tramite subject
+    const datiForm = {
+      nome: this.form.controls.name.value,
+      email: this.form.controls.email.value,
+    };
+
+    this.userService.datiUtente.next(datiForm);
+    // this.router.navigate(['home']);
+    this.router.navigateByUrl('home');
   }
 
   public isConfermaPasswordMatch(form: FormGroup) {
