@@ -7,5 +7,6 @@ import { IDataRegistration } from '../models/dataRegistration.model';
 })
 export class UserService {
   public datiUtente = new ReplaySubject<IDataRegistration>();
+  public dataContatti = new Subject();
   constructor() {}
 }
