@@ -6,25 +6,10 @@
       class="col-sm-12 col-md-6 col-lg-4 focused-style"
       *ngFor="let ricetta of ricette"
     >
-      <app-card-ricetta [ricettaFiglio]="ricetta"></app-card-ricetta>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <!-- <button
-        class="btn btn-primary"
-        (click)="openModal(modaleUno, '4', 'nomeRandom', 'cognomeRandom')"
-      >
-        apri modale
-      </button>
-      <button
-        class="btn btn-primary"
-        (click)="
-          openModal(modaleRegistrazione, '4', 'nomeRandom', 'cognomeRandom')
-        "
-      >
-        apri modale
-      </button> -->
+      <app-card-ricetta
+        [ricettaFiglio]="ricetta"
+        [page]="'ricette'"
+      ></app-card-ricetta>
     </div>
   </div>
 </div>

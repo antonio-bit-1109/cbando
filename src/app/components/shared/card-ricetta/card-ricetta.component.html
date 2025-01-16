@@ -23,14 +23,24 @@
       <ng-template pTemplate="footer">
         <div class="flex mt-1">
           <button
+            *ngIf="!page"
             routerLink="dettaglio/{{ ricettaFiglio.title }}/{{
               ricettaFiglio._id
             }}"
             class="btn btn-primary d-inline-block"
           >
-            Vai al dettaglio Ricetta
+            Vai al dettaglio Ricetta Da Ricette
           </button>
-          <!-- <button class="btn btn-secondary d-inline-block">Save</button> -->
+          <button
+            *ngIf="page"
+            routerLink="/{{ page }}/dettaglio/{{ ricettaFiglio.title }}/{{
+              ricettaFiglio._id
+            }}"
+            class="btn btn-primary d-inline-block"
+          >
+            Vai al dettaglio Ricetta Da Home
+          </button>
+
           <div
             [ngStyle]="{
               border: '0.125em solid ' + isAvailable(ricettaFiglio.published)[2]

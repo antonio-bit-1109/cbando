@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, input } from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
 @Component({
   selector: 'app-card-ricetta',
@@ -13,6 +13,8 @@ export class CardRicettaComponent {
   @Input() ricettaFiglio: IRecipe | undefined;
   // varibile di output dal figlio al padre
   @Output() msgOutput = new EventEmitter();
+
+  @Input() page: string | undefined;
   private defaultURLImage =
     'https://media.istockphoto.com/id/1396814518/it/vettoriale/immagine-in-arrivo-nessuna-foto-nessuna-immagine-in-miniatura-disponibile-illustrazione.jpg?s=2048x2048&w=is&k=20&c=JrtawqzdBNu2u9zZvkP10KLBozTxsaXPl0BxjuaUtMY=';
 
