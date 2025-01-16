@@ -6,6 +6,7 @@ import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricett
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
 import { RegistrationComponent } from './components/user/registration-template-driven/registration.component';
 import { RegistrationReactiveFormComponent } from './components/user/registration-reactive-form/registration-reactive-form.component';
+import { ContattiComponent } from './components/contatti/contatti.component';
 
 const routes: Routes = [
   // rotta di default per l'index dell URL
@@ -21,6 +22,7 @@ const routes: Routes = [
     ],
   },
   { path: 'registrazione', component: RegistrationReactiveFormComponent },
+  { path: 'contatti', component: ContattiComponent },
 
   // se la rotta scelta non c'è, redirect alla home
   { path: '**', redirectTo: 'home' },

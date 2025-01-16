@@ -1,1 +1,121 @@
-<p>contatti works!</p>
+<div class="container mt-7">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <div class="border border-3 p-5 rounded-5 my-4 primary-color-border">
+        <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+          Richiedi Informazioni
+        </p>
+
+        <!-- <form class="mx-1 mx-md-4" [formGroup]="form" (ngSubmit)="onSubmit()"> -->
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <!-- NOME -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div
+              data-mdb-input-init
+              class="d-flex gap-4 align-items-center w-100"
+            >
+              <label class="form-label fw-bolder" for="name">NOME</label>
+              <input
+                type="text"
+                id="name"
+                class="form-control"
+                name="name"
+                formControlName="name"
+              />
+            </div>
+          </div>
+          <p
+            *ngIf="
+              form.controls.name.touched &&
+              form.controls.name.hasError('required')
+            "
+            class="isDanger m-0"
+          >
+            il campo nome è obbligatorio.
+          </p>
+
+          <!-- EMAIL -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div
+              data-mdb-input-init
+              class="d-flex gap-4 align-items-center w-100"
+            >
+              <label class="form-label fw-bolder" for="email">EMAIL</label>
+              <input
+                type="text"
+                id="email"
+                class="form-control"
+                name="email"
+                formControlName="email"
+              />
+            </div>
+          </div>
+          <p
+            *ngIf="
+              form.controls.email.touched &&
+              form.controls.email.hasError('required')
+            "
+            class="isDanger m-0"
+          >
+            il campo email è obbligatorio.
+          </p>
+
+          <!-- OGGETTO -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div
+              data-mdb-input-init
+              class="d-flex gap-4 align-items-center w-100"
+            >
+              <label class="form-label fw-bolder" for="oggetto">OGGETTO</label>
+              <input
+                type="text"
+                id="oggetto"
+                class="form-control"
+                name="oggetto"
+                formControlName="oggetto"
+              />
+            </div>
+          </div>
+          <p
+            *ngIf="
+              form.controls.oggetto.touched &&
+              form.controls.oggetto.hasError('required')
+            "
+            class="isDanger m-0"
+          >
+            il campo oggetto è obbligatorio.
+          </p>
+
+          <!-- MESSAGGIO -->
+          <div class="d-flex flex-row align-items-center mb-4">
+            <div data-mdb-input-init class="align-items-center w-100">
+              <label class="form-label fw-bolder" for="messaggio"
+                >MESSAGGIO</label
+              >
+              <textarea
+                type="text"
+                id="messaggio"
+                class="form-control"
+                name="messaggio"
+                formControlName="messaggio"
+                rows="4"
+              ></textarea>
+            </div>
+          </div>
+          <p
+            *ngIf="
+              form.controls.messaggio.touched &&
+              form.controls.messaggio.hasError('required')
+            "
+            class="isDanger m-0"
+          >
+            il campo messaggio è obbligatorio.
+          </p>
+          <div>
+            <button class="btn btn-primary" type="submit">Invia</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

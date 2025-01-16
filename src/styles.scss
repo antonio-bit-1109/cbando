@@ -37,3 +37,7 @@ body {
   color: rgb(180, 9, 9);
   font-size: small;
 }
+
+.primary-color-border {
+  border-color: $primary-color-1 !important;
+}
