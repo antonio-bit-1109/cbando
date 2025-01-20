@@ -1,27 +1,30 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
+import { CardModule } from 'primeng/card';
+import { ButtonModule } from 'primeng/button';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { HomeComponent } from './components/home/home.component';
-import { CardModule } from 'primeng/card';
-import { ButtonModule } from 'primeng/button';
 import { CardRicettaComponent } from './components/shared/card-ricetta/card-ricetta.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricetta/dettaglio-ricetta.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistrationComponent } from './components/user/registration-template-driven/registration.component';
 import { RegistrationReactiveFormComponent } from './components/user/registration-reactive-form/registration-reactive-form.component';
 import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
 import { DividerModule } from 'primeng/divider';
+import { PaginatorModule } from 'primeng/paginator';
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,
@@ -55,6 +58,8 @@ import { DividerModule } from 'primeng/divider';
     PasswordModule,
     DropdownModule,
     DividerModule,
+    PaginatorModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

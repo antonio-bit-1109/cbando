@@ -1,13 +1,29 @@
 <div class="container-fluid">
   <div class="row">
+
     <div class="my-3">
       <h2 class="text-center fw-bolder mt-5">
         Le nostre Ricette: {{ titoloRicevuto }}
       </h2>
     </div>
   </div>
+<div class="row">
+  <div class="card flex justify-content-center">
+    <p-paginator 
+        (onPageChange)="onPageChange($event)" 
+        [first]="first" 
+        [rows]="size" 
+        [totalRecords]="ricette.length" 
+        [rowsPerPageOptions]="[ 2, 4, 5]" />
+</div>
+<div>
+  page: {{page}}
+  size: {{size}}
+</div>
+</div>
+
   <div class="row">
-    <ng-container *ngFor="let ricetta of ricette">
+    <ng-container *ngFor="let ricetta of ricette | slice: (page - 1) * size : page * size">
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 focused-style">
         <!-- card che riceve la singola ricetta -->
         <app-card-ricetta
@@ -17,4 +33,5 @@
       </div>
     </ng-container>
   </div>
+
 </div>

@@ -31,7 +31,7 @@ export class DettaglioRicettaComponent implements OnInit {
 
   // metodo che prende l'id inserito nel parametro
   public onGetDetail() {
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('_id'));
+    const id = this.activatedRoute.snapshot.paramMap.get('_id');
 
     if (id) {
       this.RecipeService.getDetailRicetta(id).subscribe({
@@ -51,7 +51,7 @@ export class DettaglioRicettaComponent implements OnInit {
   //
   public onGetDetail2() {
     this.activatedRoute.params.subscribe((urlParams) => {
-      const id = Number(urlParams['_id']);
+      const id = urlParams['_id'];
 
       if (id) {
         this.RecipeService.getDetailRicetta(id).subscribe(

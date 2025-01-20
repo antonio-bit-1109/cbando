@@ -3,10 +3,7 @@
     <div class="row">
       <div class="col-12">
         <div class="mt-5">
-          <i
-            class="pi pi-arrow-left arrow-color pointer"
-            routerLink="/ricette"
-          ></i>
+          <i class="pi pi-arrow-left arrow-color pointer" routerLink="/ricette"></i>
         </div>
       </div>
     </div>
@@ -14,11 +11,7 @@
       <div class="col-8">
         <p-card [header]="ricetta.title" class="m-3 rounded-4 pointer">
           <ng-template pTemplate="header">
-            <img
-              alt="Card"
-              [src]="giveDefaultImageIfNotPresent(ricetta.image)"
-              class="rounded-4 img-style"
-            />
+            <img alt="Card" [src]="giveDefaultImageIfNotPresent(ricetta.image)" class="rounded-4 img-style" />
           </ng-template>
 
           <ng-template class="border" pTemplate="body">
@@ -28,16 +21,12 @@
           <ng-template pTemplate="footer">
             <div class="d-flex">
               <span class="ms-auto">Ricetta creata in data: </span>
-              <p class="m-0 fw-bolder ms-1">{{ ricetta.date }}</p>
+              <p class="m-0 fw-bolder ms-1">{{ ricetta.createdAt }}</p>
             </div>
             <div class="d-flex">
               <span>Difficoltà: </span>
             </div>
-            <img
-              class="dim-stars"
-              [src]="getDifficolta(ricetta)"
-              [alt]="getDescription(ricetta)"
-            />
+            <img class="dim-stars" [src]="getDifficolta(ricetta)" [alt]="getDescription(ricetta)" />
           </ng-template>
         </p-card>
       </div>
