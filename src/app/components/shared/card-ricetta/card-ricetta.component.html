@@ -10,7 +10,7 @@
       <ng-template pTemplate="body">
         <!-- Contenuto personalizzato del body della card -->
         <p>{{ troncaDescrizione(ricettaFiglio.description, 100) }}</p>
-        <p class="m-0 fw-bolder">{{ ricettaFiglio.createdAt }}</p>
+        <p class="m-0 fw-bolder">{{ formatDate(ricettaFiglio.createdAt) }}</p>
       </ng-template>
 
       <ng-template pTemplate="footer">

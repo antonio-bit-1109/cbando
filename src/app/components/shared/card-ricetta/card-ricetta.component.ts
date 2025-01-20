@@ -52,4 +52,8 @@ export class CardRicettaComponent {
   public inviaTitolo(titolo: string) {
     this.msgOutput.emit(titolo);
   }
+
+  public formatDate(date: string) {
+    return date;
+  }
 }
