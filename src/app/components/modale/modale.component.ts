@@ -15,4 +15,8 @@ export class ModaleComponent {
     this.visible = false;
     this.visibleEmitter.emit(this.visible);
   }
+
+  public receiveEmission(event) {
+    this.visible = event;
+  }
 }

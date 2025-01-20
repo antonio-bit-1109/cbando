@@ -1,4 +1,4 @@
 <p-dialog (onHide)="onHide()" header="Inserisci nuova ricetta" [modal]="true" [(visible)]="visible"
     [style]="{ width: '40rem' }" [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }">
-    <app-inserisci-ricetta></app-inserisci-ricetta>
+    <app-inserisci-ricetta (IsFormVisible)="receiveEmission($event)"></app-inserisci-ricetta>
 </p-dialog>

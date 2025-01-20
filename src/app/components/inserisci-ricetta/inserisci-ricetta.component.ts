@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RecipeService } from '../../services/recipe.service';
 import { IPostRecipe } from '../../models/recipes.model';
@@ -14,14 +14,16 @@ export class InserisciRicettaComponent {
     titolo: new FormControl('', [Validators.required]),
     descrizione: new FormControl('', [Validators.required]),
     url: new FormControl('', [Validators.required]),
-    disponibile: new FormControl(null, [Validators.required]),
+    disponibile: new FormControl(false),
     difficolta: new FormControl('', [Validators.required]),
   });
 
   constructor(private recipeService: RecipeService) {}
 
+  @Output() IsFormVisible = new EventEmitter();
+
   public onSubmit() {
-    console.log(this.form.value);
+    // console.log(this.form.value);
     if (this.form.valid) {
       const ricetta: IPostRecipe = {
         title: this.form.controls.titolo.value,
@@ -34,6 +36,7 @@ export class InserisciRicettaComponent {
       this.recipeService.createRecipe(ricetta).subscribe({
         next: (resp) => {
           console.log('tutto bene , risposta server positiva.' + resp);
+          this.IsFormVisible.emit(false);
         },
         error: (err) => {
           console.error(err);
