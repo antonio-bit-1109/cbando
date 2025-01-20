@@ -8,6 +8,7 @@ import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -25,6 +26,8 @@ import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
 import { DividerModule } from 'primeng/divider';
 import { PaginatorModule } from 'primeng/paginator';
+import { InserisciRicettaComponent } from './components/inserisci-ricetta/inserisci-ricetta.component';
+import { ModaleComponent } from './components/modale/modale.component';
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,
@@ -44,6 +47,8 @@ import { PaginatorModule } from 'primeng/paginator';
     RecipesListComponent,
     RegistrationComponent,
     RegistrationReactiveFormComponent,
+    InserisciRicettaComponent,
+    ModaleComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,6 +65,7 @@ import { PaginatorModule } from 'primeng/paginator';
     DividerModule,
     PaginatorModule,
     HttpClientModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

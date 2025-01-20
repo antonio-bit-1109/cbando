@@ -1,61 +1,40 @@
 <header class="fixed-top">
   <nav class="navbar navbar-expand-lg navbar-dark me-2">
-    <img
-      class="icona-cbando pointer"
-      src="../assets/images/icona-cibando.png"
-      alt="icona"
-      routerLink="home"
-    />
+    <img class="icona-cbando pointer" src="../assets/images/icona-cibando.png" alt="icona" routerLink="home" />
 
     <a routerLink="home" class="navbar-brand pointer">{{ titolo }}</a>
 
-    <button
-      class="navbar-toggler ms-auto me-3"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-      (click)="changeCollapsed()"
-    >
+    <button class="navbar-toggler ms-auto me-3" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" (click)="changeCollapsed()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div
-      class="collapse navbar-collapse"
-      id="navbarNav"
-      [ngbCollapse]="getCollapsed()"
-    >
+    <div class="collapse navbar-collapse" id="navbarNav" [ngbCollapse]="getCollapsed()">
       <ul class="navbar-nav">
         <li class="nav-item active pointer" routerLink="home">
           <a class="nav-link">
-            <i class="pi pi-home mx-2" style="font-size: 1rem"></i>Home</a
-          >
+            <i class="pi pi-home mx-2" style="font-size: 1rem"></i>Home</a>
         </li>
 
         <li class="nav-item pointer" routerLink="ricette">
           <a class="nav-link">
-            <i class="pi pi-file mx-2" style="font-size: 1rem"></i> Ricette</a
-          >
+            <i class="pi pi-file mx-2" style="font-size: 1rem"></i> Ricette</a>
         </li>
 
         <li class="nav-item" routerLink="contatti">
           <a class="nav-link">
             <i class="pi pi-address-book mx-2" style="font-size: 1rem"></i>
-            Contatti</a
-          >
+            Contatti</a>
         </li>
 
         <li class="nav-item pointer" routerLink="registrazione">
           <a class="nav-link">
             <i class="pi pi-address-book mx-2" style="font-size: 1rem"></i>
-            Registrazione</a
-          >
+            Registrazione</a>
         </li>
       </ul>
     </div>
-    <div>
+    <!-- <div>
       <p
         (click)="changeEvidenziato()"
         class="m-0 pointer"
@@ -63,6 +42,6 @@
       >
         Benvenuto Utente
       </p>
-    </div>
+    </div> -->
   </nav>
 </header>

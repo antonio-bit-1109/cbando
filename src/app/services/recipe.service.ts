@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { RECIPES } from '../mocks/recipes.mock';
 import { Observable, of } from 'rxjs';
-import { IRecipe } from '../models/recipes.model';
+import { IPostRecipe, IRecipe } from '../models/recipes.model';
 import { HttpClient } from '@angular/common/http';
 // nel service vengono fatte le chiamate al backend
 // il servizio viene iniattato li dove un componente ne ha bisogno.
@@ -24,5 +24,9 @@ export class RecipeService {
     // const ricetta = RECIPES.find((ricetta) => ricetta._id === idparam);
     // return of(ricetta);
     return this.http.get<IRecipe>(`${this.apiBaseURL}/${idparam}`);
+  }
+
+  createRecipe(dataRicetta: IPostRecipe) {
+    return this.http.post(`${this.apiBaseURL}/`, dataRicetta);
   }
 }

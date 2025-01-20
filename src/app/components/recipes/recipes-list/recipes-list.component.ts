@@ -25,6 +25,7 @@ export class RecipesListComponent {
   rows: number = 10;
   page = 1;
   size = 4;
+  public visible = false;
 
   //inietto il servizio nel costruttore del componente
   // inserisco il dato ricevuto dal backend
@@ -50,5 +51,13 @@ export class RecipesListComponent {
     this.page = event.page + 1;
     this.size = event.rows;
     console.log('Rows per page:', this.size);
+  }
+
+  public showModal() {
+    this.visible = true;
+  }
+
+  public handleHideModal(event: any) {
+    this.visible = event;
   }
 }

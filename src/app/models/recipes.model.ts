@@ -7,3 +7,11 @@ export interface IRecipe {
   createdAt: string;
   published: boolean;
 }
+
+export interface IPostRecipe {
+  title: string;
+  description: string;
+  image: string;
+  published: boolean;
+  difficulty: number;
+}

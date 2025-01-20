@@ -1,0 +1,59 @@
+<div class="form-wrapper">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group my-3">
+            <label for="titolo">Titolo Ricetta</label>
+            <input type="text" class="form-control" id="titolo" name="titolo" aria-describedby="emailHelp"
+                placeholder="Inserisci titolo ricetta" formControlName="titolo">
+
+            <p class="isDanger m-0" *ngIf="form.controls.titolo.hasError('required') && 
+                                form.controls.titolo.touched">
+                Titolo Obbligatorio.
+            </p>
+        </div>
+        <div class="form-group my-3">
+            <label for="descrizione">Descrizione</label>
+            <input type="text" class="form-control" id="descrizione" name="descrizione" aria-describedby="emailHelp"
+                placeholder="Inserisci descrizione ricetta" formControlName="descrizione">
+
+            <p class="isDanger" *ngIf="form.controls.descrizione.hasError('required') && 
+                                form.controls.descrizione.touched">
+                Descrizione Obbligatoria.
+            </p>
+
+        </div>
+        <div class="form-group my-3">
+            <label for="immagine">URL immagine</label>
+            <input type="text" class="form-control" id="immagine" name="immagine" aria-describedby="emailHelp"
+                placeholder="Inserisci URL immagine ricetta" formControlName="url">
+
+            <p class="isDanger" *ngIf="form.controls.url.hasError('required') && 
+                                form.controls.url.touched">
+                URL Obbligatorio.
+            </p>
+        </div>
+        <div class="form-group my-3">
+            <label for="disponibile">Disponibilità ricetta: </label>
+            <div class="input-group-prepend d-flex align-items-center gap-3">
+                <p class="m-0">La ricetta sarà visualizzabile come disponibile?</p>
+                <input type="checkbox" name="disponibile" id="disponibile"
+                    aria-label="Checkbox for following text input" formControlName="disponibile">
+                <p class="isDanger" *ngIf="form.controls.disponibile.hasError('required') && 
+                                        form.controls.disponibile.touched">
+                    URL Obbligatorio.
+                </p>
+
+            </div>
+        </div>
+        <div class="form-group my-3">
+            <label for="immagine">Difficoltà ricetta</label>
+            <input type="number" class="form-control" id="difficolta" name="difficolta" aria-describedby="diff"
+                placeholder="Inserisci difficoltà ricetta" formControlName="difficolta">
+            <p class="isDanger" *ngIf="form.controls.difficolta.hasError('required') && 
+                                        form.controls.difficolta.touched">
+                Inserisci una difficoltà.
+            </p>
+
+        </div>
+        <button [disabled]="!getFormValidation()" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

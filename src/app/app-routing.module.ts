@@ -7,6 +7,7 @@ import { RecipesListComponent } from './components/recipes/recipes-list/recipes-
 import { RegistrationComponent } from './components/user/registration-template-driven/registration.component';
 import { RegistrationReactiveFormComponent } from './components/user/registration-reactive-form/registration-reactive-form.component';
 import { ContattiComponent } from './components/contatti/contatti.component';
+import { InserisciRicettaComponent } from './components/inserisci-ricetta/inserisci-ricetta.component';
 
 const routes: Routes = [
   // rotta di default per l'index dell URL
@@ -18,6 +19,7 @@ const routes: Routes = [
     children: [
       { path: 'dettaglio/:title/:_id', component: DettaglioRicettaComponent },
       { path: 'dettaglio/:_id', component: DettaglioRicettaComponent },
+      // { path: 'inserisciRicetta', component: InserisciRicettaComponent },
       { path: '', component: RecipesListComponent, pathMatch: 'full' },
     ],
   },
