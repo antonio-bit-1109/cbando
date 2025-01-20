@@ -47,13 +47,13 @@
         <div class="form-group my-3">
             <label for="immagine">Difficoltà ricetta</label>
             <input type="number" class="form-control" id="difficolta" name="difficolta" aria-describedby="diff"
-                placeholder="Inserisci difficoltà ricetta" formControlName="difficolta">
+                placeholder="Inserisci difficoltà ricetta" formControlName="difficolta" min="1" max="5">
             <p class="isDanger" *ngIf="form.controls.difficolta.hasError('required') && 
                                         form.controls.difficolta.touched">
                 Inserisci una difficoltà.
             </p>
 
         </div>
-        <button [disabled]="!getFormValidation()" type="submit" class="btn btn-primary">Submit</button>
+        <button [disabled]="!getFormValidation()" type="submit" class="btn btn-primary">Crea Nuova Ricetta</button>
     </form>
 </div>
