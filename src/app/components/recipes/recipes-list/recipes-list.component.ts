@@ -3,13 +3,6 @@ import { IRecipe } from '../../../models/recipes.model';
 import { RecipeService } from '../../../services/recipe.service';
 import { filter, map, take, first, Observable } from 'rxjs';
 
-// interface PageEvent {
-//   first: number;
-//   rows: number;
-//   page: number;
-//   pageCount: number;
-// }
-
 @Component({
   selector: 'app-recipes-list',
   standalone: false,
