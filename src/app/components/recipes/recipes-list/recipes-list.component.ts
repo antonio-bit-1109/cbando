@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
 import { RecipeService } from '../../../services/recipe.service';
+import { filter, map, take, first, Observable } from 'rxjs';
 
 // interface PageEvent {
 //   first: number;
@@ -17,6 +18,7 @@ import { RecipeService } from '../../../services/recipe.service';
   styleUrl: './recipes-list.component.scss',
 })
 export class RecipesListComponent {
+  public recipeService = inject(RecipeService);
   public ricette: IRecipe[] = [];
   public titoloRicevuto: string = '';
 
@@ -27,19 +29,40 @@ export class RecipesListComponent {
   size = 4;
   public visible = false;
 
+  public totaleRicette: IRecipe[];
+
   //inietto il servizio nel costruttore del componente
   // inserisco il dato ricevuto dal backend
   // e lo salvo in una proprietà della classe , lo stampo in console
-  constructor(private RecipeService: RecipeService) {
-    this.RecipeService.getRecipes().subscribe({
-      next: (response) => {
-        this.ricette = response.sort((a, b) => a._id - b._id);
-        console.log(this.ricette);
-      },
-      error: (err) => {
-        console.error(err);
-      },
-    });
+  constructor() {
+    // this.getRecipeMethod();
+  }
+
+  // il dollaro è convenzione per chiarire che sto facendo una chiamata asincrona
+  public recipes$: Observable<IRecipe[]> = this.recipeService.getRecipes().pipe(
+    map((res) => res.filter((ricette) => ricette.difficulty < 3)),
+    map((res) => (this.totaleRicette = res))
+  );
+
+  public getRecipeMethod() {
+    this.recipeService
+      .getRecipes()
+      .pipe(
+        take(1)
+        //first()  prendi solo la prima chiamata e poi chiude la subscribe
+        // map((res) => res[0].title) //taglio solo gli elementi che mi servono in entrata nel componente
+        // filter()
+      )
+      .subscribe({
+        next: (response) => {
+          this.ricette = response.sort((a, b) => a._id - b._id);
+          this.ricette = response;
+          console.log(this.ricette);
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
   }
 
   // metodo nel padre per ricevere un evento/output emesso dal figlio
