@@ -30,7 +30,7 @@
   <div class="row">
     <div class="card flex justify-content-center">
       <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="size"
-        [totalRecords]="totaleRicette.length" [rowsPerPageOptions]="[ 2, 4, 5]" />
+        [totalRecords]="totaleRicette?.length" [rowsPerPageOptions]="[ 2, 4, 5]" />
     </div>
     <div>
       page: {{page}}

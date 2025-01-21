@@ -1,1 +1,32 @@
-<p>login works!</p>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-6 col-lg-6">
+            <div
+                class="mt-7 border border-2 border-my-color p-5 rounded-5 mx-4 mb-4 d-flex align-items-center flex-column">
+
+                <h2>Effettua il login</h2>
+
+                <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+                    <div class="my-3">
+                        <p-floatLabel>
+                            <input id="username" type="text" pInputText ngModel name="email" class="w-100" />
+                            <label for="email">Email</label>
+                        </p-floatLabel>
+                    </div>
+
+                    <div class="my-3">
+                        <p-password ngModel [toggleMask]="true" id="password" name="password"
+                            placeholder="inserisci password" />
+                    </div>
+                    <p-button type="submit" label="Submit" />
+                    <div>
+                        <p class="isDanger m-0">Username o password errati.</p>
+                    </div>
+                </form>
+
+                <a routerLink="/registrazione" class="mt-4 pointer">Se non sei registrati clicca qui per registrarti</a>
+
+            </div>
+        </div>
+    </div>
+</div>

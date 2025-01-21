@@ -9,6 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -68,6 +70,8 @@ import { LoginComponent } from './components/login/login.component';
     PaginatorModule,
     HttpClientModule,
     DialogModule,
+    FloatLabelModule,
+    InputTextModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

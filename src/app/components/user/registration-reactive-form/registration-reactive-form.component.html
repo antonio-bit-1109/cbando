@@ -10,33 +10,15 @@
                   Registrazione
                 </p>
 
-                <form
-                  class="mx-1 mx-md-4"
-                  [formGroup]="form"
-                  (ngSubmit)="onSubmit()"
-                >
+                <form class="mx-1 mx-md-4" [formGroup]="form" (ngSubmit)="onSubmit()">
                   <div class="d-flex flex-row align-items-center mb-4">
                     <!-- <i class="fas fa-user fa-lg me-3 fa-fw"></i> -->
-                    <div
-                      data-mdb-input-init
-                      class="form-outline flex-fill mb-0"
-                    >
-                      <label class="form-label" for="form3Example1c"
-                        >Nome</label
-                      >
-                      <input
-                        type="text"
-                        id="form3Example1c"
-                        class="form-control"
-                        name="name"
-                        formControlName="name"
-                      />
-                      <p
-                        class="isDanger m-0"
-                        *ngIf="
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example1c">Nome</label>
+                      <input type="text" id="form3Example1c" class="form-control" name="name" formControlName="name" />
+                      <p class="isDanger m-0" *ngIf="
                           !form.get('name')?.valid && form.get('name')?.touched
-                        "
-                      >
+                        ">
                         Il campo nome è obbligatorio.
                       </p>
                     </div>
@@ -44,34 +26,18 @@
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <!-- <i class="fas fa-envelope fa-lg me-3 fa-fw"></i> -->
-                    <div
-                      data-mdb-input-init
-                      class="form-outline flex-fill mb-0"
-                    >
-                      <label class="form-label" for="form3Example4c"
-                        >Email</label
-                      >
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example4c">Email</label>
 
-                      <input
-                        type="email"
-                        id="form3Example3c"
-                        class="form-control"
-                        name="email"
-                        formControlName="email"
-                      />
-                      <p
-                        class="isDanger m-0"
-                        *ngIf="
+                      <input type="email" id="form3Example3c" class="form-control" name="email"
+                        formControlName="email" />
+                      <p class="isDanger m-0" *ngIf="
                           form.controls.email.hasError('required') &&
                           form.get('name')?.touched
-                        "
-                      >
+                        ">
                         Il campo email è obbligatorio.
                       </p>
-                      <p
-                        class="isDanger m-0"
-                        *ngIf="form.controls.email.hasError('email')"
-                      >
+                      <p class="isDanger m-0" *ngIf="form.controls.email.hasError('email')">
                         Il campo email deve contenere un indirizzo valido.
                       </p>
                     </div>
@@ -79,13 +45,8 @@
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <!-- <i class="fas fa-lock fa-lg me-3 fa-fw"></i> -->
-                    <div
-                      data-mdb-input-init
-                      class="form-outline flex-fill mb-0"
-                    >
-                      <label class="form-label" for="form3Example4c"
-                        >Password</label
-                      >
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example4c">Password</label>
                       <!-- <input
                         type="password"
                         id="form3Example4c"
@@ -93,26 +54,15 @@
                         name="password"
                         formControlName="password"
                       /> -->
-                      <p-password
-                        class="form-control w-100"
-                        formControlName="password"
-                        [toggleMask]="true"
-                        name="password"
-                        strongRegex=" ^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$"
-                      />
-                      <p
-                        class="isDanger m-0"
-                        *ngIf="
+                      <p-password class="form-control w-100" formControlName="password" [toggleMask]="true"
+                        name="password" strongRegex=" ^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$" />
+                      <p class="isDanger m-0" *ngIf="
                           form.controls.password.hasError('required') &&
                           form.get('password')?.touched
-                        "
-                      >
+                        ">
                         Il campo password è obbligatorio.
                       </p>
-                      <p
-                        class="isDanger m-0"
-                        *ngIf="form.controls.password.hasError('pattern')"
-                      >
+                      <p class="isDanger m-0" *ngIf="form.controls.password.hasError('pattern')">
                         Il campo password deve contenere almeno un numero, una
                         minuscola , lunghezza minima 6. max 15
                       </p>
@@ -121,82 +71,50 @@
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <!-- <i class="fas fa-key fa-lg me-3 fa-fw"></i> -->
-                    <div
-                      data-mdb-input-init
-                      class="form-outline flex-fill mb-0"
-                    >
-                      <label class="form-label" for="form3Example4cd"
-                        >Conferma password</label
-                      >
-                      <input
-                        type="password"
-                        id="form3Example4cd"
-                        class="form-control"
-                        name="ripetiPassword"
-                        formControlName="ripetiPassword"
-                        (ngModelChange)="isConfermaPasswordMatch(form)"
-                      />
-                      <p
-                        class="isDanger m-0"
-                        *ngIf="
+                    <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                      <label class="form-label" for="form3Example4cd">Conferma password</label>
+                      <input type="password" id="form3Example4cd" class="form-control" name="ripetiPassword"
+                        formControlName="ripetiPassword" (ngModelChange)="isConfermaPasswordMatch(form)" />
+                      <p class="isDanger m-0" *ngIf="
                           !isConfermaPasswordMatch(form) &&
                           form.get('ripetiPassword')?.touched
-                        "
-                      >
+                        ">
                         il campo non combacia con la password fornita.
                       </p>
                     </div>
                   </div>
 
-                  <div
-                    class="form-check d-flex flex-column justify-content-center mb-5"
-                  >
+                  <div class="form-check d-flex flex-column justify-content-center mb-5">
                     <div>
                       <label class="form-check-label" for="form2Example3">
                         I agree all statements in
                         <a>Terms of service</a>
                       </label>
-                      <input
-                        class="form-check-input me-2"
-                        type="checkbox"
-                        value=""
-                        id="form2Example3c"
-                        name="accetto"
-                        formControlName="accetto"
-                      />
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" name="accetto"
+                        formControlName="accetto" />
                     </div>
-                    <p
-                      class="isDanger m-0"
-                      *ngIf="
+                    <p class="isDanger m-0" *ngIf="
                         !form.get('accetto')?.valid &&
                         form.get('accetto').touched
-                      "
-                    >
+                      ">
                       campo obbligatorio.
                     </p>
                   </div>
 
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button
-                      type="submit"
-                      data-mdb-button-init
-                      data-mdb-ripple-init
-                      class="btn btn-primary btn-lg"
-                      [disabled]="!isFormvalid(form)"
-                    >
+                    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
+                      [disabled]="!isFormvalid(form)">
                       Registrati
                     </button>
                   </div>
+                  <div class=" text-center mb-3">
+                    <a routerLink="/login" class="pointer"> Vai al Login</a>
+                  </div>
                 </form>
               </div>
-              <div
-                class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
-              >
-                <img
-                  src="https://imgcdn.stablediffusionweb.com/2024/10/19/852fd265-c260-409f-82a1-feb1e35c1675.jpg"
-                  class="imgStyle rounded rounded-end-4"
-                  alt="Sample image"
-                />
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                <img src="https://imgcdn.stablediffusionweb.com/2024/10/19/852fd265-c260-409f-82a1-feb1e35c1675.jpg"
+                  class="imgStyle rounded rounded-end-4" alt="Sample image" />
               </div>
             </div>
           </div>

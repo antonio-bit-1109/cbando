@@ -27,11 +27,35 @@
             Contatti</a>
         </li>
 
-        <li class="nav-item pointer" routerLink="registrazione">
+        <!-- <li class="nav-item pointer" routerLink="registrazione">
           <a class="nav-link">
             <i class="pi pi-address-book mx-2" style="font-size: 1rem"></i>
-            Registrazione</a>
+            Accedi/registrati</a>
+        </li> -->
+
+
+        <li *ngIf="!authService.isLogged()" class="nav-item pointer" routerLink="login">
+          <a class="nav-link">
+            <i class="pi pi-user mx-2" style="font-size: 1rem"></i>
+            Accedi</a>
         </li>
+
+        <div *ngIf="authService.isLogged()" class="d-flex gap-3">
+
+          <li class="nav-item pointer">
+            <p class="m-0">ciao, {{user?.name}}</p>
+          </li>
+
+          <li class="nav-item pointer">
+            <a class="nav-link">Vai al profilo </a>
+          </li>
+
+          <li class="nav-item pointer">
+            <a class="nav-link" (click)="logOut()">ESCI</a>
+          </li>
+        </div>
+
+
       </ul>
     </div>
     <!-- <div>
