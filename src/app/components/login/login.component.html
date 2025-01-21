@@ -4,7 +4,7 @@
             <div
                 class="mt-7 border border-2 border-my-color p-5 rounded-5 mx-4 mb-4 d-flex align-items-center flex-column">
                 <h2>Effettua il login</h2>
-                <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+                <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
                     <div class="my-3">
                         <p-floatLabel>
                             <input id="username" type="text" pInputText [(ngModel)]="email" name="email"
