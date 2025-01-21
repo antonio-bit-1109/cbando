@@ -44,7 +44,7 @@ export class RegistrationReactiveFormComponent {
 
     this.userService.insertNewUser(dataUser).subscribe({
       next: (resp) => {
-        console.log('Dati inviati con successo' + resp);
+        console.log('Dati inviati con successo');
       },
       error: (err) => {
         console.error(err);
