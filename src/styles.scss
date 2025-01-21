@@ -45,3 +45,7 @@ body {
 .mt-7 {
   margin-block-start: 7rem;
 }
+
+.border-my-color {
+  border: 2px solid $primary-color-1 !important;
+}

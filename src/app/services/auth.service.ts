@@ -16,7 +16,7 @@ interface user {
 export class AuthService {
   constructor(private http: HttpClient, private userService: UserService) {}
 
-  apiBaseURL = 'api/users/login';
+  apiBaseURL = 'api/users';
 
   // metodi per fare il login
 
@@ -41,5 +41,10 @@ export class AuthService {
   // cancella dati dal localstorage
   public logout() {
     localStorage.removeItem('userData');
+  }
+
+  public login(myemail: string, mypassword: string) {
+    const user = { email: myemail, password: mypassword };
+    return this.http.post(`${this.apiBaseURL}/login`, user);
   }
 }
