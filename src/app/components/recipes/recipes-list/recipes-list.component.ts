@@ -28,14 +28,14 @@ export class RecipesListComponent {
   // inserisco il dato ricevuto dal backend
   // e lo salvo in una proprietà della classe , lo stampo in console
   constructor() {
-    // this.getRecipeMethod();
+    this.getRecipeMethod();
   }
 
   // il dollaro è convenzione per chiarire che sto facendo una chiamata asincrona
-  public recipes$: Observable<IRecipe[]> = this.recipeService.getRecipes().pipe(
-    map((res) => res.filter((ricette) => ricette.difficulty < 3)),
-    map((res) => (this.totaleRicette = res))
-  );
+  // public recipes$: Observable<IRecipe[]> = this.recipeService.getRecipes().pipe(
+  //   map((res) => res.filter((ricette) => ricette.difficulty < 3)),
+  //   map((res) => (this.totaleRicette = res))
+  // );
 
   public getRecipeMethod() {
     this.recipeService

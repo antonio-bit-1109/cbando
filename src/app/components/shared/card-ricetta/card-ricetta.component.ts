@@ -1,5 +1,13 @@
-import { Component, Input, Output, EventEmitter, input } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  input,
+  inject,
+} from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 @Component({
   selector: 'app-card-ricetta',
   standalone: false,
@@ -8,6 +16,7 @@ import { IRecipe } from '../../../models/recipes.model';
   styleUrl: './card-ricetta.component.scss',
 })
 export class CardRicettaComponent {
+  private sanitizer = inject(DomSanitizer);
   // variabile di input nel figlio che accetta un parametro dal padre
   // undefined nel caso in cui le ricette non vengon subito fetchata dal backend
   @Input() ricettaFiglio: IRecipe | undefined;
@@ -55,5 +64,22 @@ export class CardRicettaComponent {
 
   public formatDate(date: string) {
     return date;
+  }
+
+  getSanitaizeHTML(descrizione: string): SafeHtml {
+    const tagliaDescrizione = this.accorciaDescrizione(descrizione);
+    const sanificaDescrizione =
+      this.sanitizer.bypassSecurityTrustHtml(tagliaDescrizione);
+    return sanificaDescrizione;
+  }
+
+  private accorciaDescrizione(descrizione: string): string {
+    const lunghezzaDescr = 200;
+    if (descrizione.length <= lunghezzaDescr) {
+      return descrizione;
+    }
+
+    const ultimaPosizioneSpazio = descrizione.lastIndexOf(' ', lunghezzaDescr);
+    return descrizione.slice(0, ultimaPosizioneSpazio);
   }
 }

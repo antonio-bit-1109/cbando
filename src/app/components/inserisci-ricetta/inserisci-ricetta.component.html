@@ -12,8 +12,11 @@
         </div>
         <div class="form-group my-3">
             <label for="descrizione">Descrizione</label>
-            <input type="text" class="form-control" id="descrizione" name="descrizione" aria-describedby="emailHelp"
-                placeholder="Inserisci descrizione ricetta" formControlName="descrizione">
+            <p-editor formControlName="text" [style]="{ height: '120px' }" name="descrizione" id="descrizione"
+                formControlName="descrizione" />
+
+            <!-- <input type="text" class="form-control" id="descrizione" name="descrizione" aria-describedby="emailHelp"
+                placeholder="Inserisci descrizione ricetta" formControlName="descrizione"> -->
 
             <p class="isDanger" *ngIf="form.controls.descrizione.hasError('required') && 
                                 form.controls.descrizione.touched">

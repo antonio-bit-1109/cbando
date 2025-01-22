@@ -5,6 +5,10 @@
 @import "../node_modules/primeng/resources/primeng.css";
 @import "../node_modules/primeicons/primeicons.css";
 @import "./app/styles/colori.scss";
+
+// import Quill styles in styles.scss
+@import "../node_modules/quill/dist/quill.core.css";
+@import "../node_modules/quill/dist/quill.snow.css";
 body {
   margin: 0;
   padding: 0;

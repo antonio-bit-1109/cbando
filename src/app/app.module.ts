@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import { EditorModule } from 'primeng/editor';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -74,6 +75,7 @@ import { ProfiloComponent } from './components/user/profilo/profilo.component';
     DialogModule,
     FloatLabelModule,
     InputTextModule,
+    EditorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

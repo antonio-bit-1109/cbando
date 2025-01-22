@@ -4,12 +4,11 @@ import { HomeComponent } from './components/home/home.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
 import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricetta/dettaglio-ricetta.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
-import { RegistrationComponent } from './components/user/registration-template-driven/registration.component';
 import { RegistrationReactiveFormComponent } from './components/user/registration-reactive-form/registration-reactive-form.component';
 import { ContattiComponent } from './components/contatti/contatti.component';
-import { InserisciRicettaComponent } from './components/inserisci-ricetta/inserisci-ricetta.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfiloComponent } from './components/user/profilo/profilo.component';
+import { loggedInGuard } from './logged-in.guard';
 
 const routes: Routes = [
   // rotta di default per l'index dell URL
@@ -28,7 +27,11 @@ const routes: Routes = [
   { path: 'registrazione', component: RegistrationReactiveFormComponent },
   { path: 'contatti', component: ContattiComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'profilo', component: ProfiloComponent },
+  {
+    path: 'profilo',
+    component: ProfiloComponent,
+    canActivate: [loggedInGuard], // qui passo la guardia che ritorna un booleano e mi attiva o rende inattiva la rotta in base a delle condizioni che stanno dentro la guardia
+  },
   // se la rotta scelta non c'è, redirect alla home
   { path: '**', redirectTo: 'home' },
 ];

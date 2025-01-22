@@ -9,7 +9,7 @@
 
       <ng-template pTemplate="body">
         <!-- Contenuto personalizzato del body della card -->
-        <p>{{ troncaDescrizione(ricettaFiglio.description, 100) }}</p>
+        <p [innerHTML]="getSanitaizeHTML(ricettaFiglio.description)"></p>
         <p class="m-0 fw-bolder">{{ formatDate(ricettaFiglio.createdAt) }}</p>
       </ng-template>
 

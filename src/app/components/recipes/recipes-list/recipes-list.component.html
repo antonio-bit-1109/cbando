@@ -20,7 +20,8 @@
   </div>
 
   <div class="row">
-    <ng-container *ngFor="let ricetta of recipes$ | async | slice: (page - 1) * size : page * size">
+    <!-- <ng-container *ngFor="let ricetta of ricette  | slice: (page - 1) * size : page * size"> -->
+    <ng-container *ngFor="let ricetta of ricette ">
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 focused-style">
         <!-- card che riceve la singola ricetta -->
         <app-card-ricetta [ricettaFiglio]="ricetta" (msgOutput)="riceviEvento($event)"></app-card-ricetta>
@@ -28,10 +29,10 @@
     </ng-container>
   </div>
   <div class="row">
-    <div class="card flex justify-content-center">
+    <!-- <div class="card flex justify-content-center">
       <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="size"
         [totalRecords]="totaleRicette?.length" [rowsPerPageOptions]="[ 2, 4, 5]" />
-    </div>
+    </div> -->
     <div>
       page: {{page}}
       size: {{size}}

@@ -16,7 +16,8 @@
 
           <ng-template class="border" pTemplate="body">
             <!-- Contenuto personalizzato del body della card -->
-            <p>{{ ricetta.description | slice : 0 : 150 }}...</p>
+            <!-- <p>{{ ricetta.description | slice : 0 : 150 }}...</p> -->
+            <p [innerHTML]="getSanitaizeHTML(ricetta.description)"></p>
           </ng-template>
           <ng-template pTemplate="footer">
             <div class="d-flex">

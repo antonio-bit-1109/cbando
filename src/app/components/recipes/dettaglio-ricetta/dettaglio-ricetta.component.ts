@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { RecipeService } from '../../../services/recipe.service';
 import { IRecipe } from '../../../models/recipes.model';
 import { OnInit } from '@angular/core';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-dettaglio-ricetta',
@@ -12,6 +13,7 @@ import { OnInit } from '@angular/core';
   styleUrl: './dettaglio-ricetta.component.scss',
 })
 export class DettaglioRicettaComponent implements OnInit {
+  private sanitizer = inject(DomSanitizer);
   // invece che iniettare nel costruttore, utilizzo il metodo Inject di angular Core.
   private RecipeService = inject(RecipeService);
   private activatedRoute = inject(ActivatedRoute);
@@ -76,5 +78,22 @@ export class DettaglioRicettaComponent implements OnInit {
 
   public getDescription(ricetta: IRecipe) {
     return ricetta.description;
+  }
+
+  getSanitaizeHTML(descrizione: string): SafeHtml {
+    const tagliaDescrizione = this.accorciaDescrizione(descrizione);
+    const sanificaDescrizione =
+      this.sanitizer.bypassSecurityTrustHtml(tagliaDescrizione);
+    return sanificaDescrizione;
+  }
+
+  private accorciaDescrizione(descrizione: string): string {
+    const lunghezzaDescr = 200;
+    if (descrizione.length <= lunghezzaDescr) {
+      return descrizione;
+    }
+
+    const ultimaPosizioneSpazio = descrizione.lastIndexOf(' ', lunghezzaDescr);
+    return descrizione.slice(0, ultimaPosizioneSpazio);
   }
 }
