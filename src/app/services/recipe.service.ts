@@ -31,6 +31,6 @@ export class RecipeService {
   }
 
   deleteRecipe(id: string) {
-    return this.http.delete(`${this.apiBaseURL}/id`);
+    return this.http.delete(`${this.apiBaseURL}/${id}`);
   }
 }

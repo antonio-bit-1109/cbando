@@ -23,7 +23,7 @@ const routes: Routes = [
       { path: 'dettaglio/:title/:_id', component: DettaglioRicettaComponent },
       { path: 'dettaglio/:_id', component: DettaglioRicettaComponent },
       {
-        path: 'cancella/:_id',
+        path: 'cancella/:title/:_id',
         component: DeleteRecipeComponent,
         canActivate: [deleteRicettaGuard],
       },
