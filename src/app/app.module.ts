@@ -12,6 +12,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { EditorModule } from 'primeng/editor';
+import { ToastModule } from 'primeng/toast';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -76,6 +77,7 @@ import { ProfiloComponent } from './components/user/profilo/profilo.component';
     FloatLabelModule,
     InputTextModule,
     EditorModule,
+    ToastModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

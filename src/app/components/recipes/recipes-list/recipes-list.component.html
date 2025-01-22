@@ -1,6 +1,6 @@
 <div class="container-fluid">
+  <p-toast key="msgPostRicetta" />
   <div *ngIf="isLoggedAndAdmin()" class="row align-items-center mt-5 mb-3">
-
     <div class="col-8">
 
       <div class="my-3">
@@ -40,5 +40,6 @@
   </div>
 
   <!-- modale che apre il form per inserire dati e creare una nuova ricetta  -->
-  <app-modale [visible]="visible" (visibleEmitter)="handleHideModal($event)"></app-modale>
+  <app-modale (inviaEsitoPostRicetta)="getEsitoPostRicetta($event)" [visible]="visible"
+    (visibleEmitter)="handleHideModal($event)"></app-modale>
 </div>

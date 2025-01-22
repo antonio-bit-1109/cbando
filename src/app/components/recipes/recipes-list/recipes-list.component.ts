@@ -1,9 +1,16 @@
-import { Component, inject } from '@angular/core';
+import {
+  Component,
+  inject,
+  Input,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
 import { RecipeService } from '../../../services/recipe.service';
 import { filter, map, take, first, Observable } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
 import { Iuser } from '../../../models/user.model';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-recipes-list',
@@ -11,6 +18,7 @@ import { Iuser } from '../../../models/user.model';
 
   templateUrl: './recipes-list.component.html',
   styleUrl: './recipes-list.component.scss',
+  providers: [MessageService],
 })
 export class RecipesListComponent {
   public recipeService = inject(RecipeService);
@@ -26,11 +34,12 @@ export class RecipesListComponent {
   public visible = false;
 
   public totaleRicette: IRecipe[];
+  public esitoPostRicetta: [boolean, string] | null = null;
 
   //inietto il servizio nel costruttore del componente
   // inserisco il dato ricevuto dal backend
   // e lo salvo in una proprietà della classe , lo stampo in console
-  constructor() {
+  constructor(private messageService: MessageService) {
     this.getRecipeMethod();
   }
 
@@ -39,6 +48,27 @@ export class RecipesListComponent {
   //   map((res) => res.filter((ricette) => ricette.difficulty < 3)),
   //   map((res) => (this.totaleRicette = res))
   // );
+
+  // richiamato ogni volta che nel componente cambia qualcosa
+  // in questo caso controllo che arrivi il valore dell esito della post della ricetta
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes['esitoPostRicetta'] && this.esitoPostRicetta !== null) {
+  //     if (this.esitoPostRicetta[1] === 'succ') {
+  //       this.show(
+  //         'success',
+  //         'Ricetta creata con successo',
+  //         'Operazione eseguita'
+  //       );
+  //     } else if (this.esitoPostRicetta[1] === 'err') {
+  //       this.show(
+  //         'error',
+  //         'Errore durante la creazione della ricetta',
+  //         'Operazione fallita'
+  //       );
+  //     }
+  //     this.esitoPostRicetta = null; // Resetta la variabile
+  //   }
+  // }
 
   public getRecipeMethod() {
     this.recipeService
@@ -87,5 +117,38 @@ export class RecipesListComponent {
     }
 
     return false;
+  }
+
+  // prendo l'esito ricetta in arrivo dal figlio e utilizzo la risposta al suo interno per renderizzare il toast con l'esito della post
+  // infine rifaccio la getAll di tutti i prodotti per aggiornare il componente.
+  public getEsitoPostRicetta(event) {
+    this.esitoPostRicetta = event;
+
+    if (Array.isArray(this.esitoPostRicetta)) {
+      if (this.esitoPostRicetta[1] === 'succ') {
+        this.show(
+          'success',
+          'Ricetta creata con successo',
+          'Operazione eseguita'
+        );
+      } else {
+        this.show(
+          'error',
+          'Errore durante la creazione della ricetta',
+          'Operazione fallita'
+        );
+      }
+
+      this.getRecipeMethod();
+    }
+  }
+
+  show(severity: string, content: string, summary: string) {
+    this.messageService.add({
+      severity: severity,
+      summary: summary,
+      detail: content,
+      key: 'msgPostRicetta',
+    });
   }
 }
