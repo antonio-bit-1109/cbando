@@ -66,14 +66,15 @@ export class CardRicettaComponent {
     return date;
   }
 
-  getSanitaizeHTML(descrizione: string): SafeHtml {
-    const tagliaDescrizione = this.accorciaDescrizione(descrizione);
-    const sanificaDescrizione =
-      this.sanitizer.bypassSecurityTrustHtml(tagliaDescrizione);
-    return sanificaDescrizione;
-  }
+  // getSanitaizeHTML(descrizione: string): string {
+  //   const tagliaDescrizione = this.accorciaDescrizione(descrizione);
+  //   return tagliaDescrizione;
+  //   const sanificaDescrizione =
+  //     this.sanitizer.bypassSecurityTrustHtml(tagliaDescrizione);
+  //   return sanificaDescrizione;
+  // }
 
-  private accorciaDescrizione(descrizione: string): string {
+  public accorciaDescrizione(descrizione: string): string {
     const lunghezzaDescr = 200;
     if (descrizione.length <= lunghezzaDescr) {
       return descrizione;

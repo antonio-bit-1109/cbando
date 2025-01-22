@@ -80,14 +80,14 @@ export class DettaglioRicettaComponent implements OnInit {
     return ricetta.description;
   }
 
-  getSanitaizeHTML(descrizione: string): SafeHtml {
-    const tagliaDescrizione = this.accorciaDescrizione(descrizione);
-    const sanificaDescrizione =
-      this.sanitizer.bypassSecurityTrustHtml(tagliaDescrizione);
-    return sanificaDescrizione;
-  }
+  // getSanitaizeHTML(descrizione: string): SafeHtml {
+  //   const tagliaDescrizione = this.accorciaDescrizione(descrizione);
+  //   const sanificaDescrizione =
+  //     this.sanitizer.bypassSecurityTrustHtml(tagliaDescrizione);
+  //   return sanificaDescrizione;
+  // }
 
-  private accorciaDescrizione(descrizione: string): string {
+  public accorciaDescrizione(descrizione: string): string {
     const lunghezzaDescr = 200;
     if (descrizione.length <= lunghezzaDescr) {
       return descrizione;
