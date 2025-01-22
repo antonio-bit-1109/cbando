@@ -46,6 +46,7 @@ export class InserisciRicettaComponent {
         },
         error: (err) => {
           console.error(err);
+          this.IsFormVisible.emit(false);
           // ** in caso di errore nella post della ricetta emetto questo altro array
           this.RespReceived.emit([true, 'err']);
         },
