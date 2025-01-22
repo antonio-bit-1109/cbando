@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserService } from './user.service';
+import { Iuser, IUserDetail } from '../models/user.model';
 
 interface user {
   _id?: string;
@@ -21,12 +22,13 @@ export class AuthService {
   // metodi per fare il login
 
   //metodo che prende i dati utente e li salva nel local storage
-  public saveStorage(res) {
+  public saveStorage(res: IUserDetail) {
     const user = {
       id: res._id,
       name: res.name,
       email: res.email,
       password: res.password,
+      role: res.role,
     };
 
     localStorage.setItem('userData', JSON.stringify(user));

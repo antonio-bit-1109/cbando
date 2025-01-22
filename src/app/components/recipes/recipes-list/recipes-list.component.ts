@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
 import { RecipeService } from '../../../services/recipe.service';
 import { filter, map, take, first, Observable } from 'rxjs';
+import { AuthService } from '../../../services/auth.service';
+import { Iuser } from '../../../models/user.model';
 
 @Component({
   selector: 'app-recipes-list',
@@ -12,6 +14,7 @@ import { filter, map, take, first, Observable } from 'rxjs';
 })
 export class RecipesListComponent {
   public recipeService = inject(RecipeService);
+  public authService = inject(AuthService);
   public ricette: IRecipe[] = [];
   public titoloRicevuto: string = '';
 
@@ -75,5 +78,14 @@ export class RecipesListComponent {
 
   public handleHideModal(event: any) {
     this.visible = event;
+  }
+
+  public isLoggedAndAdmin() {
+    if (this.authService.isLogged()) {
+      const storage: Iuser = this.authService.getStorage();
+      return storage?.role === 'admin';
+    }
+
+    return false;
   }
 }

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <div class="row align-items-center mt-5 mb-3">
+  <div *ngIf="isLoggedAndAdmin()" class="row align-items-center mt-5 mb-3">
 
     <div class="col-8">
 
@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div [ngStyle]="{'margin-top' : isLoggedAndAdmin() ? '0' : '4rem'}" class="row mt-6">
     <!-- <ng-container *ngFor="let ricetta of ricette  | slice: (page - 1) * size : page * size"> -->
     <ng-container *ngFor="let ricetta of ricette ">
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 focused-style">

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { IUserDetail } from '../../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   email = '';
   password = '';
-  user;
+  user: IUserDetail | undefined;
   errMsg: string = '';
   private router = inject(Router);
   private authService = inject(AuthService);
@@ -21,7 +22,7 @@ export class LoginComponent {
     console.log(form.value);
     if (form.email !== '' && form.password !== '') {
       this.authService.login(form.email, form.password).subscribe({
-        next: (res) => {
+        next: (res: IUserDetail) => {
           this.user = res;
           if (res) {
             this.authService.saveStorage(res);
