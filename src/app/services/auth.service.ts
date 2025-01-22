@@ -40,6 +40,11 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('userData')) !== null;
   }
 
+  public isAdmin(): boolean {
+    const user: IUserDetail = JSON.parse(localStorage.getItem('userData'));
+    return user.role === 'admin';
+  }
+
   // cancella dati dal localstorage
   public logout() {
     localStorage.removeItem('userData');

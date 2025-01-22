@@ -8,7 +8,9 @@ import { RegistrationReactiveFormComponent } from './components/user/registratio
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfiloComponent } from './components/user/profilo/profilo.component';
-import { loggedInGuard } from './logged-in.guard';
+import { loggedInGuard } from './guards/logged-in.guard';
+import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete-recipe.component';
+import { deleteRicettaGuard } from './guards/delete-ricetta.guard';
 
 const routes: Routes = [
   // rotta di default per l'index dell URL
@@ -20,6 +22,11 @@ const routes: Routes = [
     children: [
       { path: 'dettaglio/:title/:_id', component: DettaglioRicettaComponent },
       { path: 'dettaglio/:_id', component: DettaglioRicettaComponent },
+      {
+        path: 'cancella/:_id',
+        component: DeleteRecipeComponent,
+        canActivate: [deleteRicettaGuard],
+      },
       // { path: 'inserisciRicetta', component: InserisciRicettaComponent },
       { path: '', component: RecipesListComponent, pathMatch: 'full' },
     ],

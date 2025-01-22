@@ -4,6 +4,8 @@ import { RecipeService } from '../../../services/recipe.service';
 import { IRecipe } from '../../../models/recipes.model';
 import { OnInit } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { AuthService } from '../../../services/auth.service';
+import { Iuser } from '../../../models/user.model';
 
 @Component({
   selector: 'app-dettaglio-ricetta',
@@ -19,6 +21,7 @@ export class DettaglioRicettaComponent implements OnInit {
   private activatedRoute = inject(ActivatedRoute);
   private Router = inject(Router);
 
+  private authService = inject(AuthService);
   ricetta: IRecipe | undefined;
   private defaultURLImage =
     'https://media.istockphoto.com/id/1396814518/it/vettoriale/immagine-in-arrivo-nessuna-foto-nessuna-immagine-in-miniatura-disponibile-illustrazione.jpg?s=2048x2048&w=is&k=20&c=JrtawqzdBNu2u9zZvkP10KLBozTxsaXPl0BxjuaUtMY=';
@@ -95,5 +98,14 @@ export class DettaglioRicettaComponent implements OnInit {
 
     const ultimaPosizioneSpazio = descrizione.lastIndexOf(' ', lunghezzaDescr);
     return descrizione.slice(0, ultimaPosizioneSpazio);
+  }
+
+  public isLoggedAndAdmin() {
+    if (this.authService.isLogged()) {
+      const storage: Iuser = this.authService.getStorage();
+      return storage?.role === 'admin';
+    }
+
+    return false;
   }
 }

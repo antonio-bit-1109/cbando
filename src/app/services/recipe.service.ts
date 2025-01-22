@@ -29,4 +29,8 @@ export class RecipeService {
   createRecipe(dataRicetta: IPostRecipe) {
     return this.http.post(`${this.apiBaseURL}/`, dataRicetta);
   }
+
+  deleteRecipe(id: string) {
+    return this.http.delete(`${this.apiBaseURL}/id`);
+  }
 }

@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from './services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 // guardia FUNZIONALE -- scritta come funzione
 // prende il metodo nel auth service e controlla se i dati sono presenti nel localstorage

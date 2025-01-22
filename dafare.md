@@ -8,3 +8,4 @@
 - [] fixa il paginator per mostrare tutte le ricette e gestisci la descrizione contenente i tag html nella stringa tramite il tag [innerhtml]='' sul componente
 - [] implementazione sanificazione dell' html
   -[] AGGIUNGI COMPONENTE CON PAGINA DI ERRORE -- se dalla guardia provi ad accedere ad una rotta alla quale non sei autorizzato redirect a quella pagina
+- [] implementa delete ricetta e guardian ???

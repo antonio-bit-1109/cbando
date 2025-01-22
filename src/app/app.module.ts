@@ -34,6 +34,7 @@ import { InserisciRicettaComponent } from './components/inserisci-ricetta/inseri
 import { ModaleComponent } from './components/modale/modale.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfiloComponent } from './components/user/profilo/profilo.component';
+import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete-recipe.component';
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,
@@ -57,6 +58,7 @@ import { ProfiloComponent } from './components/user/profilo/profilo.component';
     ModaleComponent,
     LoginComponent,
     ProfiloComponent,
+    DeleteRecipeComponent,
   ],
   imports: [
     BrowserModule,
