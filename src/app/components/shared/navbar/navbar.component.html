@@ -46,18 +46,23 @@
             <p class="m-0">ciao, {{user?.name}}</p>
           </li> -->
 
-          <li class="nav-item pointer">
+          <!-- <li class="nav-item pointer">
             <a class="nav-link">Vai al profilo </a>
-          </li>
+          </li> -->
 
           <li class="nav-item pointer">
             <a class="nav-link" (click)="logOut()">ESCI</a>
+          </li>
+
+          <li routerLink="profilo" *ngIf="authService.isLogged()" class="nav-item pointer">
+            <a class="nav-link">Vai al profilo</a>
           </li>
         </div>
 
         <div class="d-flex ms-auto align-items-center nav-link">
           <p class="m-0">ciao, {{user?.name}}</p>
         </div>
+
 
       </ul>
     </div>

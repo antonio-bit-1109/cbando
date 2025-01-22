@@ -31,6 +31,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { InserisciRicettaComponent } from './components/inserisci-ricetta/inserisci-ricetta.component';
 import { ModaleComponent } from './components/modale/modale.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProfiloComponent } from './components/user/profilo/profilo.component';
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,
@@ -53,6 +54,7 @@ import { LoginComponent } from './components/login/login.component';
     InserisciRicettaComponent,
     ModaleComponent,
     LoginComponent,
+    ProfiloComponent,
   ],
   imports: [
     BrowserModule,

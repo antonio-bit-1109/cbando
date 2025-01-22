@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Dati Utente:</h2>
+        </div>
+    </div>
+    <div class="row mt-7">
+        <div class="col-12">
+
+            <div>
+                <p> <strong>ID:</strong> {{user?._id}}</p>
+                <p> <strong>DATA CREAZIONE:</strong> {{user?.createdAt | date}}</p>
+                <p> <strong>EMAIL:</strong> {{user?.email}}</p>
+                <p><strong>NOME: </strong> {{user?.name}}</p>
+                <p> <strong>NOTE:</strong> {{user?.note}}</p>
+                <p>PASSWORD: {{user?.password}}</p>
+                <p> RUOLO: {{user?.role}}</p>
+                <p> AGGIORNATO: {{user?.updatedAt | date}}</p>
+            </div>
+
+        </div>
+    </div>
+</div>

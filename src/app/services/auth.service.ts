@@ -47,4 +47,12 @@ export class AuthService {
     const user = { email: myemail, password: mypassword };
     return this.http.post(`${this.apiBaseURL}/login`, user);
   }
+
+  public getStorage() {
+    if (localStorage.getItem('userData') !== null) {
+      return JSON.parse(localStorage.getItem('userData'));
+    } else {
+      console.error('local storage è vuoto');
+    }
+  }
 }
