@@ -9,3 +9,4 @@
 - [] implementazione sanificazione dell' html
   -[] AGGIUNGI COMPONENTE CON PAGINA DI ERRORE -- se dalla guardia provi ad accedere ad una rotta alla quale non sei autorizzato redirect a quella pagina
 - [] implementa delete ricetta e guardian ???
+- [] porta nel modulo shared i moduli da cui dipende il carousel di ng bootstrap

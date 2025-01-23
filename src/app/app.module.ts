@@ -2,7 +2,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -13,6 +13,10 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { EditorModule } from 'primeng/editor';
 import { ToastModule } from 'primeng/toast';
+import { PasswordModule } from 'primeng/password';
+import { DropdownModule } from 'primeng/dropdown';
+import { DividerModule } from 'primeng/divider';
+import { PaginatorModule } from 'primeng/paginator';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -26,14 +30,11 @@ import { DettaglioRicettaComponent } from './components/recipes/dettaglio-ricett
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
 import { RegistrationComponent } from './components/user/registration-template-driven/registration.component';
 import { RegistrationReactiveFormComponent } from './components/user/registration-reactive-form/registration-reactive-form.component';
-import { PasswordModule } from 'primeng/password';
-import { DropdownModule } from 'primeng/dropdown';
-import { DividerModule } from 'primeng/divider';
-import { PaginatorModule } from 'primeng/paginator';
 import { InserisciRicettaComponent } from './components/inserisci-ricetta/inserisci-ricetta.component';
 import { ModaleComponent } from './components/modale/modale.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfiloComponent } from './components/user/profilo/profilo.component';
+import { SharedModule } from './components/shared/shared.module';
 import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete-recipe.component';
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
@@ -44,32 +45,32 @@ import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete
   declarations: [
     AppComponent,
     NavbarComponent,
-    CarouselComponent,
-    RecipesComponent,
-    HomeComponent,
-    CardRicettaComponent,
+    // CarouselComponent,
+    // RecipesComponent,
+    // HomeComponent,
+    // CardRicettaComponent,
     FooterComponent,
     ContattiComponent,
     DettaglioRicettaComponent,
-    RecipesListComponent,
+    // RecipesListComponent,
     RegistrationComponent,
     RegistrationReactiveFormComponent,
-    InserisciRicettaComponent,
-    ModaleComponent,
+    // InserisciRicettaComponent,
+    // ModaleComponent,
     LoginComponent,
     ProfiloComponent,
-    DeleteRecipeComponent,
+    // DeleteRecipeComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    NgbModule,
-    CardModule,
+    // NgbModule,
+    // CardModule,
     ButtonModule,
     NgbCollapseModule,
-    FormsModule,
-    ReactiveFormsModule,
+    // FormsModule,
+    // ReactiveFormsModule,
     PasswordModule,
     DropdownModule,
     DividerModule,
@@ -80,6 +81,7 @@ import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete
     InputTextModule,
     EditorModule,
     ToastModule,
+    SharedModule, // contiene homecomponent e modalecomponent da passare sia ad app che recipe module ('città')
   ],
   providers: [],
   bootstrap: [AppComponent],

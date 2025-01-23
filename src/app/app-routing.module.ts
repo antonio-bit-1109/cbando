@@ -16,21 +16,28 @@ const routes: Routes = [
   // rotta di default per l'index dell URL
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
+  // {
+  //   path: 'ricette',
+  //   component: RecipesComponent,
+  //   children: [
+  //     { path: 'dettaglio/:title/:_id', component: DettaglioRicettaComponent },
+  //     { path: 'dettaglio/:_id', component: DettaglioRicettaComponent },
+  //     {
+  //       path: 'cancella/:title/:_id',
+  //       component: DeleteRecipeComponent,
+  //       canActivate: [deleteRicettaGuard],
+  //     },
+  //     { path: '', component: RecipesListComponent, pathMatch: 'full' },
+  //   ],
+  // },
   {
     path: 'ricette',
-    component: RecipesComponent,
-    children: [
-      { path: 'dettaglio/:title/:_id', component: DettaglioRicettaComponent },
-      { path: 'dettaglio/:_id', component: DettaglioRicettaComponent },
-      {
-        path: 'cancella/:title/:_id',
-        component: DeleteRecipeComponent,
-        canActivate: [deleteRicettaGuard],
-      },
-      // { path: 'inserisciRicetta', component: InserisciRicettaComponent },
-      { path: '', component: RecipesListComponent, pathMatch: 'full' },
-    ],
+    loadChildren: () =>
+      import('./components/recipes/recipes.module').then(
+        (module) => module.RecipesModule
+      ),
   },
+
   { path: 'registrazione', component: RegistrationReactiveFormComponent },
   { path: 'contatti', component: ContattiComponent },
   { path: 'login', component: LoginComponent },
