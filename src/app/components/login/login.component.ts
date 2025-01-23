@@ -26,7 +26,6 @@ export class LoginComponent implements OnDestroy {
   constructor(private messageService: MessageService) {}
 
   public onSubmit(form) {
-    console.log(form.value);
     if (form.email !== '' && form.password !== '') {
       this.authService.login(form.email, form.password).subscribe({
         next: (res: IUserDetail) => {
@@ -37,6 +36,7 @@ export class LoginComponent implements OnDestroy {
             this.TimeOutId = setTimeout(() => {
               this.router.navigateByUrl('/home');
             }, 2000);
+            this.resetFields();
           } else {
             this.errMsg = 'username o password errate.';
           }
@@ -44,6 +44,7 @@ export class LoginComponent implements OnDestroy {
         error: (err) => {
           console.error(err);
           this.show('error', 'errore in fase di login. Riprova.', 'ERRORE');
+          this.resetFields();
         },
       });
     }
@@ -60,5 +61,10 @@ export class LoginComponent implements OnDestroy {
 
   ngOnDestroy(): void {
     clearTimeout(this.TimeOutId);
+  }
+
+  resetFields() {
+    this.email = '';
+    this.password = '';
   }
 }

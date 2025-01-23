@@ -11,7 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { FloatLabelModule } from 'primeng/floatlabel';
-import { EditorModule } from 'primeng/editor';
+// import { EditorModule } from 'primeng/editor';
 import { ToastModule } from 'primeng/toast';
 import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
@@ -79,7 +79,7 @@ import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete
     DialogModule,
     FloatLabelModule,
     InputTextModule,
-    EditorModule,
+    // EditorModule,
     ToastModule,
     SharedModule, // contiene homecomponent e modalecomponent da passare sia ad app che recipe module ('città')
   ],

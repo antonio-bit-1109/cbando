@@ -10,7 +10,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { RouterModule } from '@angular/router';
-
+import { EditorModule } from 'primeng/editor';
 @NgModule({
   declarations: [
     ModaleComponent,
@@ -27,6 +27,7 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     CardModule,
     RouterModule,
+    EditorModule,
   ],
   exports: [
     ModaleComponent,
@@ -38,6 +39,7 @@ import { RouterModule } from '@angular/router';
     FormsModule,
     CardModule,
     RouterModule,
+    EditorModule,
   ],
 })
 export class SharedModule {}
