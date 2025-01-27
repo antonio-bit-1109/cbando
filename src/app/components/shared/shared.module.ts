@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CardModule } from 'primeng/card';
 import { RouterModule } from '@angular/router';
 import { EditorModule } from 'primeng/editor';
+import { ButtonModule } from 'primeng/button';
 @NgModule({
   declarations: [
     ModaleComponent,
@@ -28,6 +29,7 @@ import { EditorModule } from 'primeng/editor';
     CardModule,
     RouterModule,
     EditorModule,
+    ButtonModule,
   ],
   exports: [
     ModaleComponent,
@@ -40,6 +42,7 @@ import { EditorModule } from 'primeng/editor';
     CardModule,
     RouterModule,
     EditorModule,
+    ButtonModule,
   ],
 })
 export class SharedModule {}

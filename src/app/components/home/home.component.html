@@ -1,29 +1,30 @@
 <app-carousel></app-carousel>
 <div class="container">
-  <h2 class="text-center fs-2 mt-4">Ultime Ricette:</h2>
+  <div class="d-flex justify-content-center gap-4 align-items-center">
+    <h2 class="text-center fs-2 mt-4">Ultime Ricette:</h2>
+    <p-button [label]="isLoaded ? 'Nascondi Ricette' : 'Carica ricette'" (click)="toggleRicette()" />
+  </div>
+
+  @defer (when isLoaded) {
+
+  @if (isLoaded) {
   <div class="row">
-    <div
-      class="col-sm-12 col-md-6 col-lg-4 focused-style"
-      *ngFor="let ricetta of ricette"
-    >
-      <app-card-ricetta
-        [ricettaFiglio]="ricetta"
-        [page]="'ricette'"
-      ></app-card-ricetta>
+    <div class="col-sm-12 col-md-6 col-lg-4 focused-style" *ngFor="let ricetta of ricette">
+      <app-card-ricetta [ricettaFiglio]="ricetta" [page]="'ricette'"></app-card-ricetta>
     </div>
   </div>
+  }
+
+  }
+
+
 </div>
 
 <!-- MODALE UNO  -->
 <ng-template #modaleUno let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Cancella prodotto</h4>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
     <p>
@@ -35,12 +36,7 @@
     <button type="button" class="btn btn-primary" (click)='modal.dismiss()'>
       Annulla
     </button>
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="modal.close('dato da passare')"
-      ngbAutofocus
-    >
+    <button type="button" class="btn btn-secondary" (click)="modal.close('dato da passare')" ngbAutofocus>
       Conferma
     </button>
   </div>
@@ -50,12 +46,7 @@
 <ng-template #modaleRegistrazione let-modal>
   <div class="modal-header">
     <h4 class="modal-title">Dati utente</h4>
-    <button
-      type="button"
-      class="btn-close"
-      aria-label="Close"
-      (click)="modal.dismiss('Cross click')"
-    ></button>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
     <p>One fine body&hellip;</p>
@@ -66,11 +57,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      class="btn btn-secondary"
-      (click)="modal.close('Close click')"
-    >
+    <button type="button" class="btn btn-secondary" (click)="modal.close('Close click')">
       Close
     </button>
   </div>

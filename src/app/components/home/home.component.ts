@@ -29,6 +29,8 @@ export class HomeComponent implements AfterViewInit {
   public nomeModale = '';
   public cognomeModale = '';
 
+  public isLoaded = false;
+
   //costrutt
   constructor(
     private RecipeService: RecipeService,
@@ -82,5 +84,9 @@ export class HomeComponent implements AfterViewInit {
       .catch((err) => {
         console.log('nessuna azione da eseguire' + err);
       });
+  }
+
+  public toggleRicette() {
+    this.isLoaded = !this.isLoaded;
   }
 }
