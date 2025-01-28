@@ -6,15 +6,6 @@
         <img (click)="inviaTitolo(ricettaFiglio.title)" alt="Card"
           [src]="giveDefaultImageIfNotPresent(ricettaFiglio.image)" class="rounded-4 img-style" />
 
-        <!-- icone cuore -->
-        <!-- <div *ngIf="isUserLogged() && !heartClicked  && this.ricettaGiaPreferita() === false ; else alreadyPreferito">
-          <i (click)="handleHeart()" class="pi pi-heart position-heart" style="font-size: 2rem;color:red"></i>
-        </div>
-
-        <ng-template #alreadyPreferito>
-          <i (click)="handleHeart()" class="pi pi-heart-fill position-heart" style="font-size: 2rem;color:red"></i>
-        </ng-template> -->
-
         <div *ngIf="isUserLogged()">
 
           <i *ngIf="this.ricettaGiaPreferita() === false" (click)="handleHeart(true)" class="pi pi-heart position-heart"
@@ -36,16 +27,19 @@
 
       <ng-template pTemplate="footer">
         <div class="flex mt-1">
-          <button routerLink="/ricette/dettaglio/{{ ricettaFiglio.title }}/{{page}}/{{
+          <button *ngIf="this.urlCorrente.includes('ricette') else otherBtn" routerLink="/ricette/dettaglio/{{ ricettaFiglio.title }}/{{page}}/{{
               ricettaFiglio._id
             }}" class="btn btn-primary d-inline-block">
             Vai al dettaglio Ricetta Da Ricette
           </button>
-          <button routerLink="dettaglio/{{ ricettaFiglio.title }}/{{page}}/{{
+          <ng-template #otherBtn>
+            <button routerLink="dettaglio/{{ ricettaFiglio.title }}/{{page}}/{{
               ricettaFiglio._id
             }}" class="btn btn-primary d-inline-block">
-            Vai al dettaglio Ricetta Da Home
-          </button>
+              Vai al dettaglio Ricetta Da Home
+            </button>
+          </ng-template>
+
 
           <div [ngStyle]="{
               border: '0.125em solid ' + isAvailable(ricettaFiglio.published)[2]

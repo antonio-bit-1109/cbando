@@ -38,9 +38,15 @@ export class CardRicettaComponent {
 
   @Output() public warningRefetchUser = new EventEmitter();
 
+  public urlCorrente: string | undefined;
   public heartClicked = false;
   private defaultURLImage =
     'https://media.istockphoto.com/id/1396814518/it/vettoriale/immagine-in-arrivo-nessuna-foto-nessuna-immagine-in-miniatura-disponibile-illustrazione.jpg?s=2048x2048&w=is&k=20&c=JrtawqzdBNu2u9zZvkP10KLBozTxsaXPl0BxjuaUtMY=';
+
+  constructor() {
+    this.urlCorrente = this.router.url;
+    console.log(this.urlCorrente);
+  }
 
   // metodi utili
   public troncaDescrizione(descrizione: string, Maxlength: number) {
