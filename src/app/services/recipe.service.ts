@@ -33,4 +33,8 @@ export class RecipeService {
   deleteRecipe(id: string) {
     return this.http.delete(`${this.apiBaseURL}/${id}`);
   }
+
+  putModificheRicetta(dataRicetta: IPostRecipe, id: string) {
+    return this.http.put(`${this.apiBaseURL}/${id}`, dataRicetta);
+  }
 }

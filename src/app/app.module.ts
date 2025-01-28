@@ -59,6 +59,7 @@ import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete
     // ModaleComponent,
     LoginComponent,
     ProfiloComponent,
+
     // DeleteRecipeComponent,
   ],
   imports: [

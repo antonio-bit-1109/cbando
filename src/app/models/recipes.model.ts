@@ -15,3 +15,15 @@ export interface IPostRecipe {
   published: boolean;
   difficulty: number;
 }
+
+export interface Resp_edit_recipe_put {
+  _id: string;
+  title: string;
+  description: string;
+  image: string;
+  published: boolean;
+  difficulty: number;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
+}

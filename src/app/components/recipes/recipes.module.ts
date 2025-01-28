@@ -5,6 +5,7 @@ import { InserisciRicettaComponent } from '../inserisci-ricetta/inserisci-ricett
 import { CardRicettaComponent } from '../shared/card-ricetta/card-ricetta.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
+import { ModificaRicettaComponent } from '../modifica-ricetta/modifica-ricetta.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -24,6 +25,7 @@ import { ModaleComponent } from '../modale/modale.component';
 import { RecipesRoutingModule } from './recipes-routing.module';
 import { HomeComponent } from '../home/home.component';
 import { SharedModule } from '../shared/shared.module';
+import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   //componenti
@@ -33,6 +35,7 @@ import { SharedModule } from '../shared/shared.module';
     // CardRicettaComponent,
     RecipesListComponent,
     DeleteRecipeComponent,
+    ModificaRicettaComponent,
   ],
 
   // moduli di utility per applicazione
@@ -56,6 +59,7 @@ import { SharedModule } from '../shared/shared.module';
     NgbModule,
     RecipesRoutingModule,
     SharedModule,
+    CheckboxModule,
   ],
   // moduli accessibili anche all esterno
   exports: [

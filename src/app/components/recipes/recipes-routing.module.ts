@@ -5,6 +5,8 @@ import { DettaglioRicettaComponent } from './dettaglio-ricetta/dettaglio-ricetta
 import { deleteRicettaGuard } from '../../guards/delete-ricetta.guard';
 import { DeleteRecipeComponent } from './delete-recipe/delete-recipe.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
+import { ModificaRicettaComponent } from '../modifica-ricetta/modifica-ricetta.component';
+import { modificaRicettaGuard } from '../../guards/modifica-ricetta.guard';
 
 const routes: Routes = [
   // {
@@ -29,6 +31,11 @@ const routes: Routes = [
     path: 'cancella/:title/:_id',
     component: DeleteRecipeComponent,
     canActivate: [deleteRicettaGuard],
+  },
+  {
+    path: 'modificaRicetta/:_id',
+    component: ModificaRicettaComponent,
+    canActivate: [modificaRicettaGuard],
   },
 ];
 
