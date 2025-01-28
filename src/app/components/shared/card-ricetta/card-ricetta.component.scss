@@ -25,10 +25,10 @@
   transition: transform 0.3s ease; /* Aggiungi una transizione per un effetto più fluido */
 }
 
-.focused-style:hover {
-  transform: scale(1.1);
-  transition: transform 0.3s ease; /* Aggiungi una transizione per un effetto più fluido */
-}
+// .focused-style:hover {
+//   transform: scale(1.1);
+//   transition: transform 0.3s ease; /* Aggiungi una transizione per un effetto più fluido */
+// }
 
 .disabled-card {
   filter: grayscale(100%);
@@ -38,4 +38,10 @@
 
 .min-heigth {
   min-height: 451px;
+}
+
+.position-heart {
+  position: absolute;
+  top: 45px;
+  left: 4px;
 }

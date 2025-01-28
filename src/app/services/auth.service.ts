@@ -62,4 +62,13 @@ export class AuthService {
       console.error('local storage è vuoto');
     }
   }
+
+  public getUserId(): string | null {
+    if (localStorage.getItem('userData') !== null) {
+      const token = JSON.parse(localStorage.getItem('userData'));
+      return token.id;
+    }
+
+    return null;
+  }
 }

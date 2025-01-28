@@ -1,10 +1,14 @@
 <div class="row">
   <div [ngClass]="{ 'disabled-card': !isAvailable(ricettaFiglio.published)[1] }" class="focused-style">
     <!-- <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 focused-style"> -->
-    <p-card [header]="ricettaFiglio.title" class="m-3 rounded-4 pointer">
+    <p-card [header]="ricettaFiglio.title" class="m-3 rounded-4 pointer position-relative">
       <ng-template pTemplate="header">
         <img (click)="inviaTitolo(ricettaFiglio.title)" alt="Card"
           [src]="giveDefaultImageIfNotPresent(ricettaFiglio.image)" class="rounded-4 img-style" />
+        <i *ngIf="isUserLogged() && !heartClicked" (click)="handleHeart()" class="pi pi-heart position-heart "
+          style="font-size: 2rem;color:red"></i>
+        <i *ngIf="isUserLogged() && heartClicked" (click)="handleHeart()" class="pi pi-heart-fill position-heart "
+          style="font-size: 2rem;color:red"></i>
       </ng-template>
 
       <ng-template pTemplate="body">

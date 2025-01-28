@@ -22,4 +22,14 @@ export class UserService {
     const body = { email: email };
     return this.http.post<IUserDetail>(`${this.apiBaseUrl}/user`, body);
   }
+
+  public addPreferiti(idUtenteVal: string, idProdottoVal: number) {
+    const body = { idProdotto: idProdottoVal, idUser: idUtenteVal };
+    return this.http.put(`${this.apiBaseUrl}/addPreferiti`, body);
+  }
+
+  public removePreferito(idUtenteVal: string, idProdottoVal: number) {
+    const body = { idProdotto: idProdottoVal, idUser: idUtenteVal };
+    return this.http.put(`${this.apiBaseUrl}/removePreferiti`, body);
+  }
 }
