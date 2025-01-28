@@ -21,12 +21,17 @@
             <i class="pi pi-file mx-2" style="font-size: 1rem"></i> Ricette</a>
         </li>
 
-        <li class="nav-item" routerLink="contatti">
+        <li class="nav-item pointer " routerLink="contatti">
           <a class="nav-link">
             <i class="pi pi-address-book mx-2" style="font-size: 1rem"></i>
             Contatti</a>
         </li>
-
+        <!-- 
+        <li class="nav-item pointer" routerLink="contatti">
+          <a class="nav-link">
+            <i class="pi pi-heart-fill mx-2" style="font-size: 1rem"></i>
+            Preferiti</a>
+        </li> -->
 
         <li *ngIf="!authService.isLogged()" class="nav-item pointer" routerLink="login">
           <a class="nav-link">

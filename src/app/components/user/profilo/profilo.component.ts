@@ -13,6 +13,7 @@ import { UserService } from '../../../services/user.service';
 export class ProfiloComponent implements OnInit {
   public userLocalStorage: Iuser | undefined;
   public user: IUserDetail | undefined;
+  sidebarVisible: boolean = false;
   constructor(
     private authService: AuthService,
     private userService: UserService

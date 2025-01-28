@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { AuthService } from '../../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -24,6 +24,8 @@ export class CardRicettaComponent {
   private activatedRoute = inject(ActivatedRoute);
   private userService = inject(UserService);
   private authService = inject(AuthService);
+  private router = inject(Router);
+
   // variabile di input nel figlio che accetta un parametro dal padre
   // undefined nel caso in cui le ricette non vengon subito fetchata dal backend
   @Input() ricettaFiglio: IRecipe | undefined;
@@ -31,6 +33,10 @@ export class CardRicettaComponent {
   @Output() msgOutput = new EventEmitter();
 
   @Input() page: number | undefined | string;
+
+  @Input() arrPreferiti: string[] | undefined;
+
+  @Output() public warningRefetchUser = new EventEmitter();
 
   public heartClicked = false;
   private defaultURLImage =
@@ -85,11 +91,11 @@ export class CardRicettaComponent {
     return descrizione.slice(0, ultimaPosizioneSpazio);
   }
 
-  public handleHeart() {
-    this.heartClicked = !this.heartClicked;
+  public handleHeart(value: boolean) {
+    this.heartClicked = value;
     const userId = this.authService.getUserId();
 
-    // se il cuore viene impostato come filled faccio la fetch per pushare nel array dell'utente id del prodotto
+    // se il cuore viene impostato come filled faccio la fetch per pushare nel array dell'utente id del prodotto e rifaccio la get dei dati utente
     if (this.heartClicked) {
       this.userService.addPreferiti(userId, this.ricettaFiglio._id).subscribe({
         next: (resp) => {
@@ -99,8 +105,6 @@ export class CardRicettaComponent {
           console.log(err.error);
         },
       });
-
-      return;
     }
 
     // se il cuore vien reso di nuovo empty tolgo id prodotto dall array dell utente.
@@ -115,12 +119,24 @@ export class CardRicettaComponent {
             console.log(err.error);
           },
         });
-
-      return;
     }
+
+    // alla fine rifetcho i dati dello user per aggiornare la vista dei preferiti
+    this.warningRefetchUser.emit(true);
   }
 
   public isUserLogged() {
     return this.authService.isLogged();
+  }
+
+  public ricettaGiaPreferita() {
+    if (
+      this.arrPreferiti.find((id) => id === this.ricettaFiglio._id.toString())
+    ) {
+      this.heartClicked = true;
+      return true;
+    }
+    this.heartClicked = false;
+    return false;
   }
 }

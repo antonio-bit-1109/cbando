@@ -17,6 +17,7 @@ import { PasswordModule } from 'primeng/password';
 import { DropdownModule } from 'primeng/dropdown';
 import { DividerModule } from 'primeng/divider';
 import { PaginatorModule } from 'primeng/paginator';
+import { SidebarModule } from 'primeng/sidebar';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -36,6 +37,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfiloComponent } from './components/user/profilo/profilo.component';
 import { SharedModule } from './components/shared/shared.module';
 import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete-recipe.component';
+import { PreferitiComponent } from './components/preferiti/preferiti.component';
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,
@@ -59,6 +61,7 @@ import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete
     // ModaleComponent,
     LoginComponent,
     ProfiloComponent,
+    PreferitiComponent,
 
     // DeleteRecipeComponent,
   ],
@@ -66,6 +69,7 @@ import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    SidebarModule,
     // NgbModule,
     // CardModule,
     ButtonModule,

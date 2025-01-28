@@ -10,3 +10,4 @@
   -[] AGGIUNGI COMPONENTE CON PAGINA DI ERRORE -- se dalla guardia provi ad accedere ad una rotta alla quale non sei autorizzato redirect a quella pagina
 - [] implementa delete ricetta e guardian ???
 - [] porta nel modulo shared i moduli da cui dipende il carousel di ng bootstrap
+- [] avendo l'array dei preferiti dell utente, passalo alla ricetta in qualche modo ? fai risalire in superficie id ricetta e se corrisponde a uno di quelli nell array passato dal padre mostra il cuore gia pieno ??

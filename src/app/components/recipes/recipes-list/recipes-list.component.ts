@@ -1,17 +1,13 @@
-import {
-  Component,
-  inject,
-  Input,
-  OnChanges,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
 import { RecipeService } from '../../../services/recipe.service';
 import { filter, map, take, first, Observable } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
-import { Iuser } from '../../../models/user.model';
+import { Iuser, IUserDetail } from '../../../models/user.model';
 import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '../../../services/user.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-recipes-list',
@@ -24,6 +20,8 @@ import { ActivatedRoute } from '@angular/router';
 export class RecipesListComponent {
   public recipeService = inject(RecipeService);
   public authService = inject(AuthService);
+
+  public userService = inject(UserService);
   public ricette: IRecipe[] = [];
   public titoloRicevuto: string = '';
 
@@ -36,6 +34,8 @@ export class RecipesListComponent {
 
   public totaleRicette: IRecipe[];
   public esitoPostRicetta: [boolean, string] | null = null;
+
+  public ArrayPreferitiUtente: string[] = [];
 
   //inietto il servizio nel costruttore del componente
   // inserisco il dato ricevuto dal backend
@@ -51,6 +51,7 @@ export class RecipesListComponent {
     }
 
     this.getRecipeMethod();
+    this.getPreferitiUtente();
   }
 
   // il dollaro è convenzione per chiarire che sto facendo una chiamata asincrona
@@ -79,6 +80,20 @@ export class RecipesListComponent {
   //     this.esitoPostRicetta = null; // Resetta la variabile
   //   }
   // }
+
+  // faccio una chiamataa per prendere i dettagli dell utente ed in particolare l'array con i suoi preferiti
+  public getPreferitiUtente() {
+    const user = this.authService.getStorage();
+    const email = user.email;
+    this.userService.GetDetailUser(email).subscribe({
+      next: (userData: IUserDetail) => {
+        this.ArrayPreferitiUtente = userData.preferite;
+      },
+      error: (err: HttpErrorResponse) => {
+        console.error(err.error);
+      },
+    });
+  }
 
   public getRecipeMethod() {
     this.recipeService
@@ -160,5 +175,11 @@ export class RecipesListComponent {
       detail: content,
       key: 'msgPostRicetta',
     });
+  }
+
+  public refetchUserData(event) {
+    if (event) {
+      this.getPreferitiUtente();
+    }
   }
 }

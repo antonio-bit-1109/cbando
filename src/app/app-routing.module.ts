@@ -11,6 +11,7 @@ import { ProfiloComponent } from './components/user/profilo/profilo.component';
 import { loggedInGuard } from './guards/logged-in.guard';
 import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete-recipe.component';
 import { deleteRicettaGuard } from './guards/delete-ricetta.guard';
+import { PreferitiComponent } from './components/preferiti/preferiti.component';
 
 const routes: Routes = [
   // rotta di default per l'index dell URL
@@ -46,6 +47,7 @@ const routes: Routes = [
     component: ProfiloComponent,
     canActivate: [loggedInGuard], // qui passo la guardia che ritorna un booleano e mi attiva o rende inattiva la rotta in base a delle condizioni che stanno dentro la guardia
   },
+  { path: 'preferiti', component: PreferitiComponent },
   // se la rotta scelta non c'è, redirect alla home
   // { path: '**', redirectTo: 'home' },
 ];
