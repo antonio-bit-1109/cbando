@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-card-ricetta',
   standalone: false,
@@ -17,6 +18,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 })
 export class CardRicettaComponent {
   private sanitizer = inject(DomSanitizer);
+  private activatedRoute = inject(ActivatedRoute);
   // variabile di input nel figlio che accetta un parametro dal padre
   // undefined nel caso in cui le ricette non vengon subito fetchata dal backend
   @Input() ricettaFiglio: IRecipe | undefined;
