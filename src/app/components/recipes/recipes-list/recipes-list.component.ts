@@ -84,15 +84,22 @@ export class RecipesListComponent {
   // faccio una chiamataa per prendere i dettagli dell utente ed in particolare l'array con i suoi preferiti
   public getPreferitiUtente() {
     const user = this.authService.getStorage();
-    const email = user.email;
-    this.userService.GetDetailUser(email).subscribe({
-      next: (userData: IUserDetail) => {
-        this.ArrayPreferitiUtente = userData.preferite;
-      },
-      error: (err: HttpErrorResponse) => {
-        console.error(err.error);
-      },
-    });
+
+    if (user) {
+      const email = user?.email;
+      this.userService.GetDetailUser(email ? email : 'default').subscribe({
+        next: (userData: IUserDetail) => {
+          this.ArrayPreferitiUtente = userData.preferite;
+        },
+        error: (err: HttpErrorResponse) => {
+          console.error(err.error);
+        },
+      });
+    } else {
+      console.log(
+        'local storage vuoto. login non effettuato. non chiamo dettagli utente.'
+      );
+    }
   }
 
   public getRecipeMethod() {
