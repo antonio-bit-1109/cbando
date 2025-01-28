@@ -24,7 +24,8 @@
     <ng-container *ngFor="let ricetta of ricette | slice : (page - 1) * size : page*size">
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 focused-style">
         <!-- card che riceve la singola ricetta -->
-        <app-card-ricetta [ricettaFiglio]="ricetta" (msgOutput)="riceviEvento($event)"></app-card-ricetta>
+        <app-card-ricetta [page]="this.page" [ricettaFiglio]="ricetta"
+          (msgOutput)="riceviEvento($event)"></app-card-ricetta>
       </div>
     </ng-container>
   </div>

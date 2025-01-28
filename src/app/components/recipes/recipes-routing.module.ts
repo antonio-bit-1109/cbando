@@ -25,15 +25,19 @@ const routes: Routes = [
   // },
 
   { path: '', component: RecipesListComponent },
-  { path: 'dettaglio/:title/:_id', component: DettaglioRicettaComponent },
+  { path: ':page', component: RecipesListComponent },
+  {
+    path: 'dettaglio/:title/:page/:_id',
+    component: DettaglioRicettaComponent,
+  },
   { path: 'dettaglio/:_id', component: DettaglioRicettaComponent },
   {
-    path: 'cancella/:title/:_id',
+    path: 'cancella/:title/:page/:_id',
     component: DeleteRecipeComponent,
     canActivate: [deleteRicettaGuard],
   },
   {
-    path: 'modificaRicetta/:_id',
+    path: 'modificaRicetta/:page/:_id',
     component: ModificaRicettaComponent,
     canActivate: [modificaRicettaGuard],
   },

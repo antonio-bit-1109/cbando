@@ -25,7 +25,7 @@ export class CardRicettaComponent {
   // varibile di output dal figlio al padre
   @Output() msgOutput = new EventEmitter();
 
-  @Input() page: string | undefined;
+  @Input() page: number | undefined | string;
   private defaultURLImage =
     'https://media.istockphoto.com/id/1396814518/it/vettoriale/immagine-in-arrivo-nessuna-foto-nessuna-immagine-in-miniatura-disponibile-illustrazione.jpg?s=2048x2048&w=is&k=20&c=JrtawqzdBNu2u9zZvkP10KLBozTxsaXPl0BxjuaUtMY=';
 
@@ -67,14 +67,6 @@ export class CardRicettaComponent {
   public formatDate(date: string) {
     return date;
   }
-
-  // getSanitaizeHTML(descrizione: string): string {
-  //   const tagliaDescrizione = this.accorciaDescrizione(descrizione);
-  //   return tagliaDescrizione;
-  //   const sanificaDescrizione =
-  //     this.sanitizer.bypassSecurityTrustHtml(tagliaDescrizione);
-  //   return sanificaDescrizione;
-  // }
 
   public accorciaDescrizione(descrizione: string): string {
     const lunghezzaDescr = 200;

@@ -47,7 +47,7 @@ const routes: Routes = [
     canActivate: [loggedInGuard], // qui passo la guardia che ritorna un booleano e mi attiva o rende inattiva la rotta in base a delle condizioni che stanno dentro la guardia
   },
   // se la rotta scelta non c'è, redirect alla home
-  { path: '**', redirectTo: 'home' },
+  // { path: '**', redirectTo: 'home' },
 ];
 
 @NgModule({

@@ -11,6 +11,7 @@ import { filter, map, take, first, Observable } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
 import { Iuser } from '../../../models/user.model';
 import { MessageService } from 'primeng/api';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-recipes-list',
@@ -39,7 +40,16 @@ export class RecipesListComponent {
   //inietto il servizio nel costruttore del componente
   // inserisco il dato ricevuto dal backend
   // e lo salvo in una proprietà della classe , lo stampo in console
-  constructor(private messageService: MessageService) {
+  constructor(
+    private messageService: MessageService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    const page = this.activatedRoute.snapshot.paramMap.get('page');
+
+    if (page && parseInt(page)) {
+      this.page = parseInt(page);
+    }
+
     this.getRecipeMethod();
   }
 

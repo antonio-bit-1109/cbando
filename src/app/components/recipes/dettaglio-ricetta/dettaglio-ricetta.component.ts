@@ -23,14 +23,19 @@ export class DettaglioRicettaComponent implements OnInit {
 
   private authService = inject(AuthService);
   ricetta: IRecipe | undefined;
+
+  public idPaginaDoveStaRicetta: string | undefined;
+
   private defaultURLImage =
     'https://media.istockphoto.com/id/1396814518/it/vettoriale/immagine-in-arrivo-nessuna-foto-nessuna-immagine-in-miniatura-disponibile-illustrazione.jpg?s=2048x2048&w=is&k=20&c=JrtawqzdBNu2u9zZvkP10KLBozTxsaXPl0BxjuaUtMY=';
 
   private percorso = 'assets/images/difficolta-';
 
-  constructor() {}
-
   ngOnInit(): void {
+    // prendo dalla rotta la pagina alla quale si trovava il prodotto al momento del click
+    this.idPaginaDoveStaRicetta =
+      this.activatedRoute.snapshot.paramMap.get('page');
+    // console.log(this.idPaginaDoveStaRicetta);
     this.onGetDetail();
   }
 

@@ -15,12 +15,12 @@
 
       <ng-template pTemplate="footer">
         <div class="flex mt-1">
-          <button *ngIf="!page" routerLink="dettaglio/{{ ricettaFiglio.title }}/{{
+          <button routerLink="/ricette/dettaglio/{{ ricettaFiglio.title }}/{{page}}/{{
               ricettaFiglio._id
             }}" class="btn btn-primary d-inline-block">
             Vai al dettaglio Ricetta Da Ricette
           </button>
-          <button *ngIf="page" routerLink="/{{ page }}/dettaglio/{{ ricettaFiglio.title }}/{{
+          <button routerLink="dettaglio/{{ ricettaFiglio.title }}/{{page}}/{{
               ricettaFiglio._id
             }}" class="btn btn-primary d-inline-block">
             Vai al dettaglio Ricetta Da Home
