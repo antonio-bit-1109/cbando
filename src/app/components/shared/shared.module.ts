@@ -12,7 +12,7 @@ import { CardModule } from 'primeng/card';
 import { RouterModule } from '@angular/router';
 import { EditorModule } from 'primeng/editor';
 import { ButtonModule } from 'primeng/button';
-
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     ModaleComponent,
@@ -25,7 +25,7 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     DialogModule,
     NgbModule,
-
+    ToastModule,
     FormsModule,
     ReactiveFormsModule,
     CardModule,

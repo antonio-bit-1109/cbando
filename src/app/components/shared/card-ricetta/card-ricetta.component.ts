@@ -12,12 +12,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { AuthService } from '../../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-card-ricetta',
   standalone: false,
 
   templateUrl: './card-ricetta.component.html',
   styleUrl: './card-ricetta.component.scss',
+  providers: [MessageService],
 })
 export class CardRicettaComponent {
   private sanitizer = inject(DomSanitizer);
@@ -25,7 +27,7 @@ export class CardRicettaComponent {
   private userService = inject(UserService);
   private authService = inject(AuthService);
   private router = inject(Router);
-
+  private messageService = inject(MessageService);
   // variabile di input nel figlio che accetta un parametro dal padre
   // undefined nel caso in cui le ricette non vengon subito fetchata dal backend
   @Input() ricettaFiglio: IRecipe | undefined;
@@ -104,8 +106,13 @@ export class CardRicettaComponent {
     // se il cuore viene impostato come filled faccio la fetch per pushare nel array dell'utente id del prodotto e rifaccio la get dei dati utente
     if (this.heartClicked) {
       this.userService.addPreferiti(userId, this.ricettaFiglio._id).subscribe({
-        next: (resp) => {
+        next: (resp: { message: string }) => {
           console.log(resp);
+          this.show(
+            'success',
+            'aggiunta preferiti',
+            `${this.ricettaFiglio.title}: ${resp.message}`
+          );
         },
         error: (err: HttpErrorResponse) => {
           console.log(err.error);
@@ -118,8 +125,13 @@ export class CardRicettaComponent {
       this.userService
         .removePreferito(userId, this.ricettaFiglio._id)
         .subscribe({
-          next: (resp) => {
+          next: (resp: { message: string }) => {
             console.log(resp);
+            this.show(
+              'info',
+              'aggiunta preferiti',
+              `${this.ricettaFiglio.title}: ${resp.message}`
+            );
           },
           error: (err: HttpErrorResponse) => {
             console.log(err.error);
@@ -144,5 +156,15 @@ export class CardRicettaComponent {
     }
     this.heartClicked = false;
     return false;
+  }
+
+  show(severity: string, summary: string, detail: string) {
+    this.messageService.add({
+      severity: severity,
+      summary: summary,
+      detail: detail,
+      life: 2000,
+      key: 'addPreferiti',
+    });
   }
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <p-sidebar [(visible)]="sidebarVisible">
         <h3>Sidebar</h3>
-        <div routerLink="/preferiti" class="pointer">
+        <div routerLink="/preferiti" class="pointer border border-1 p-2 text-center">
             <p class="d-inline">Vai ai preferiti</p> <i class="pi pi-heart-fill mx-2" style="font-size: 1rem"></i>
         </div>
     </p-sidebar>
@@ -16,8 +16,13 @@
             <div class="d-flex justify-content-end">
                 <!-- <p-button (onClick)="sidebarVisible = true" icon="pi pi-search" severity="secondary" />
                 <p-button icon="pi pi-search" [rounded]="true" [text]="true" severity="success" /> -->
-                <p-button icon="pi pi-search" [rounded]="true" severity="success" [outlined]="true" size="large"
+                <!-- <p-button icon="pi pi-search" rounded="true" severity="success" [outlined]="true" size="large"
                     (onClick)="sidebarVisible = true" />
+                <p-button icon="pi pi-search" [rounded]="true" severity="success" [outlined]="true" size="large"
+                    (onClick)="sidebarVisible = true" /> -->
+                <p-button icon="pi pi-search" [rounded]="true" [text]="true" [raised]="true" severity="success"
+                    (onClick)="sidebarVisible = true" />
+
 
             </div>
 
