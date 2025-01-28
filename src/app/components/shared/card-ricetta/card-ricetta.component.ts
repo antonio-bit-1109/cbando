@@ -13,6 +13,7 @@ import { UserService } from '../../../services/user.service';
 import { AuthService } from '../../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
+import { SubjectService } from '../../../services/subject.service';
 @Component({
   selector: 'app-card-ricetta',
   standalone: false,
@@ -28,6 +29,7 @@ export class CardRicettaComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
   private messageService = inject(MessageService);
+  private subjectService = inject(SubjectService);
   // variabile di input nel figlio che accetta un parametro dal padre
   // undefined nel caso in cui le ricette non vengon subito fetchata dal backend
   @Input() ricettaFiglio: IRecipe | undefined;
@@ -47,7 +49,8 @@ export class CardRicettaComponent {
 
   constructor() {
     this.urlCorrente = this.router.url;
-    console.log(this.urlCorrente);
+
+    // console.log(this.urlCorrente);
   }
 
   // metodi utili
@@ -129,7 +132,7 @@ export class CardRicettaComponent {
             console.log(resp);
             this.show(
               'info',
-              'aggiunta preferiti',
+              'rimozione preferiti',
               `${this.ricettaFiglio.title}: ${resp.message}`
             );
           },

@@ -8,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SubjectService } from '../../../services/subject.service';
 
 @Component({
   selector: 'app-recipes-list',
@@ -42,7 +43,8 @@ export class RecipesListComponent {
   // e lo salvo in una proprietà della classe , lo stampo in console
   constructor(
     private messageService: MessageService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private subjectService: SubjectService
   ) {
     const page = this.activatedRoute.snapshot.paramMap.get('page');
 
@@ -90,6 +92,8 @@ export class RecipesListComponent {
       this.userService.GetDetailUser(email ? email : 'default').subscribe({
         next: (userData: IUserDetail) => {
           this.ArrayPreferitiUtente = userData.preferite;
+          // riempio anche il subject con i dati relativi ai preferiti dell utente.
+          this.subjectService.fillArrayPreferitiUtente(userData.preferite);
         },
         error: (err: HttpErrorResponse) => {
           console.error(err.error);

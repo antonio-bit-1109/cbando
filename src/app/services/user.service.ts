@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Subject, ReplaySubject, Observable } from 'rxjs';
+import { Subject, ReplaySubject, Observable, BehaviorSubject } from 'rxjs';
 import { IDataRegistration } from '../models/dataRegistration.model';
 import { HttpClient } from '@angular/common/http';
 import { Iuser, IUserDetail } from '../models/user.model';
@@ -11,6 +11,7 @@ export class UserService {
   public datiUtente = new ReplaySubject<IDataRegistration>();
   public dataContatti = new Subject();
 
+  public arrayPreferiti = new BehaviorSubject<string[] | null>(null);
   public apiBaseUrl = 'api/users';
   constructor() {}
 
