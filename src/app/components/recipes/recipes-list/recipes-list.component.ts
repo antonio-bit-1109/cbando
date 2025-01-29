@@ -43,9 +43,8 @@ export class RecipesListComponent {
   // e lo salvo in una proprietà della classe , lo stampo in console
   constructor(
     private messageService: MessageService,
-    private activatedRoute: ActivatedRoute
-  ) // private subjectService: SubjectService
-  {
+    private activatedRoute: ActivatedRoute // private subjectService: SubjectService
+  ) {
     const page = this.activatedRoute.snapshot.paramMap.get('page');
 
     if (page && parseInt(page)) {

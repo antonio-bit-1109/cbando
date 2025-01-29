@@ -18,6 +18,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { DividerModule } from 'primeng/divider';
 import { PaginatorModule } from 'primeng/paginator';
 import { SidebarModule } from 'primeng/sidebar';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -78,6 +79,7 @@ import { PreferitiComponent } from './components/preferiti/preferiti.component';
     // ReactiveFormsModule,
     PasswordModule,
     DropdownModule,
+    ProgressBarModule,
     DividerModule,
     PaginatorModule,
     HttpClientModule,

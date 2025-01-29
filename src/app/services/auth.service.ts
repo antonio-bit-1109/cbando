@@ -63,6 +63,11 @@ export class AuthService {
     }
   }
 
+  public getUserEmail(): string {
+    const userData: Iuser = this.getStorage();
+    return userData.email;
+  }
+
   public getUserId(): string | null {
     if (localStorage.getItem('userData') !== null) {
       const token = JSON.parse(localStorage.getItem('userData'));

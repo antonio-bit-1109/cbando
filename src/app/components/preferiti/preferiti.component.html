@@ -1,7 +1,38 @@
-<div class="container">
-    <div class="row">
-        <div class="col-12">
-            <div></div>
+<div class="mt-7 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+
+
+            <ng-container *ngIf="this.ricette; else noData">
+
+                <ng-container *ngFor="let ricetta of ricette; trackBy: trackById">
+
+                    <div class="col-md-8">
+
+                        <!-- singola ricetta -->
+                        <div class="card my-2 focused-style">
+                            <div class="card-header">
+                                <h3>{{ricetta.title}}</h3>
+                            </div>
+                            <div class="card-body">
+                                <img class=" circle rounded rounded-circle m-2" src="{{ricetta.image}}"
+                                    alt="{{ricetta.description}}">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </ng-container>
+
+            </ng-container>
+
+
+
+            <ng-template #noData>
+                <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+            </ng-template>
+
         </div>
     </div>
 </div>
