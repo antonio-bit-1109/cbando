@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
@@ -18,6 +18,8 @@ import { IRecipe } from '../../models/recipes.model';
 export class PreferitiComponent implements OnInit {
   public arrayPreferiti: string[] | undefined;
   public ricette: IRecipe[] | undefined;
+  public hideProgressBar = false;
+  @ViewChild('progressBar') progressBar: ElementRef | undefined;
   constructor(
     private userService: UserService,
     private authService: AuthService,
@@ -38,8 +40,10 @@ export class PreferitiComponent implements OnInit {
       next: (userdata: IUserDetail) => {
         this.arrayPreferiti = userdata.preferite;
         //simulo un ritardo per mostrare il loader nel template
-        setTimeout(() => {}, 2000);
-        this.getDetailRicetteForkJoin();
+        setTimeout(() => {
+          this.getDetailRicetteForkJoin();
+          this.hideProgressBar = true;
+        }, 2000);
       },
       error: (err: HttpErrorResponse) => {
         console.error('errore durante get dell array preferiti dell utente.');

@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
 
 
-            <ng-container *ngIf="this.ricette; else noData">
+            <ng-container *ngIf="this.ricette?.length; else noData">
 
                 <ng-container *ngFor="let ricetta of ricette; trackBy: trackById">
 
@@ -30,7 +30,15 @@
 
 
             <ng-template #noData>
-                <p-progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+
+                <ng-container *ngIf="this.hideProgressBar">
+                    <p>Nessun preferito salvato.</p>
+                </ng-container>
+
+                <ng-container *ngIf="!this.hideProgressBar">
+                    <p-progressBar #progressBar mode="indeterminate" [style]="{ height: '6px' }" />
+                </ng-container>
+
             </ng-template>
 
         </div>
