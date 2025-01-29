@@ -22,6 +22,8 @@ export class NavbarComponent implements DoCheck {
   private isCollapsed = false;
 
   public user: user | undefined;
+
+  public ricercaText: string | undefined;
   constructor(private router: Router, public authService: AuthService) {}
 
   // viene chiamato dopo l'init del componente
