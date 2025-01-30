@@ -1,6 +1,7 @@
 import { Component, DoCheck } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
+import { SubjectService } from '../../../services/subject.service';
 
 interface user {
   _id?: string;
@@ -24,7 +25,11 @@ export class NavbarComponent implements DoCheck {
   public user: user | undefined;
 
   public ricercaText: string | undefined;
-  constructor(private router: Router, public authService: AuthService) {}
+  constructor(
+    private router: Router,
+    public authService: AuthService,
+    private subjectService: SubjectService
+  ) {}
 
   // viene chiamato dopo l'init del componente
   // resta in ascolto di eventuali cambiamenti
@@ -46,13 +51,6 @@ export class NavbarComponent implements DoCheck {
     this.authService.logout();
     this.router.navigateByUrl('login');
   }
-  // public getRandomColor() {
-  //   let color = '#';
-  //   for (let i = 0; i < 6; i++) {
-  //     color += Math.floor(Math.random() * 9).toString();
-  //   }
-  //   return color;
-  // }
 
   public changeCollapsed() {
     this.isCollapsed = !this.isCollapsed;
@@ -60,5 +58,9 @@ export class NavbarComponent implements DoCheck {
 
   public getCollapsed() {
     return this.isCollapsed;
+  }
+
+  public avviaRicerca() {
+    this.subjectService.fillText(this.ricercaText);
   }
 }

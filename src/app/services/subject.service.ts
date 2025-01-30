@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SubjectService {}
+export class SubjectService {
+  private textRicercaNavbar = new BehaviorSubject<string | null>(null);
+
+  public fillText(stringVal: string) {
+    this.textRicercaNavbar.next(stringVal);
+  }
+
+  public $subjectText_Observ = this.textRicercaNavbar.asObservable();
+}

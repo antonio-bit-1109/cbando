@@ -8,6 +8,7 @@ import { MessageService } from 'primeng/api';
 import { ActivatedRoute } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { SubjectService } from '../../../services/subject.service';
 // import { SubjectService } from '../../../services/subject.service';
 
 @Component({
@@ -43,7 +44,8 @@ export class RecipesListComponent {
   // e lo salvo in una proprietà della classe , lo stampo in console
   constructor(
     private messageService: MessageService,
-    private activatedRoute: ActivatedRoute // private subjectService: SubjectService
+    private activatedRoute: ActivatedRoute,
+    private subjectService: SubjectService
   ) {
     const page = this.activatedRoute.snapshot.paramMap.get('page');
 
@@ -53,6 +55,11 @@ export class RecipesListComponent {
 
     this.getRecipeMethod();
     this.getPreferitiUtente();
+    this.subjectService.$subjectText_Observ.subscribe({
+      next: (filterOpt: string) => {
+        this.getRecipeMethod(filterOpt);
+      },
+    });
   }
 
   // il dollaro è convenzione per chiarire che sto facendo una chiamata asincrona
@@ -103,11 +110,20 @@ export class RecipesListComponent {
     }
   }
 
-  public getRecipeMethod() {
+  public getRecipeMethod(filterOption?: string | null) {
     this.recipeService
       .getRecipes()
       .pipe(
-        take(1)
+        // take(1)
+        map((ricetta) => {
+          if (filterOption) {
+            return ricetta.filter((ricetta) =>
+              ricetta.title.toLowerCase().includes(filterOption.toLowerCase())
+            );
+          }
+          this.page = 1;
+          return ricetta;
+        })
         //first()  prendi solo la prima chiamata e poi chiude la subscribe
         // map((res) => res[0].title) //taglio solo gli elementi che mi servono in entrata nel componente
         // filter()
