@@ -5,6 +5,8 @@ import {
   EventEmitter,
   input,
   inject,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { IRecipe } from '../../../models/recipes.model';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -52,6 +54,12 @@ export class CardRicettaComponent {
 
     // console.log(this.urlCorrente);
   }
+
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   if (changes['arrPreferiti']) {
+  //     this.ricettaGiaPreferita();
+  //   }
+  // }
 
   // metodi utili
   public troncaDescrizione(descrizione: string, Maxlength: number) {
@@ -102,6 +110,11 @@ export class CardRicettaComponent {
     return descrizione.slice(0, ultimaPosizioneSpazio);
   }
 
+  //MODIFICA LA LOGICA DI CHIAMATA
+  // SE IL VALORE DI HEARTCILCKED è VUOTO CHIAMO PER FARE UN AGGIUNTA
+  // SE IL VALORE DI HEART CLICKED è PIENO CHIAMO PER RIMUOVERE DAI PREFERITI
+  // RI CONTROLLA UN PO TUTTO IL GIRO CHE FA COMPONENTE PADRE FIGLIO PER RENDERIZZARE LA VISTA DEL CUORE
+  // UTILIZZA ONCHANGES PER CONTROLLARE LE MODIFICHE ALLA VARIABILE IN INPUT CHE CONTIENE ARRAY PREFERITI
   public handleHeart(value: boolean) {
     this.heartClicked = value;
     const userId = this.authService.getUserId();

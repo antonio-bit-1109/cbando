@@ -91,8 +91,6 @@ export class RecipesListComponent {
       this.userService.GetDetailUser(email ? email : 'default').subscribe({
         next: (userData: IUserDetail) => {
           this.ArrayPreferitiUtente = userData.preferite;
-          // riempio anche il subject con i dati relativi ai preferiti dell utente.
-          // this.subjectService.fillArrayPreferitiUtente(userData.preferite);
         },
         error: (err: HttpErrorResponse) => {
           console.error(err.error);
