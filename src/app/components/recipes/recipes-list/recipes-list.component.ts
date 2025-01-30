@@ -125,9 +125,9 @@ export class RecipesListComponent {
   }
 
   // metodo nel padre per ricevere un evento/output emesso dal figlio
-  riceviEvento(event: any) {
-    this.titoloRicevuto = event;
-  }
+  // riceviEvento(event: any) {
+  //   this.titoloRicevuto = event;
+  // }
 
   onPageChange(event: any) {
     this.page = event.page + 1;

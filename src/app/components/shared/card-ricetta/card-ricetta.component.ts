@@ -92,9 +92,9 @@ export class CardRicettaComponent {
     return imageURL;
   }
 
-  public inviaTitolo(titolo: string) {
-    this.msgOutput.emit(titolo);
-  }
+  // public inviaTitolo(titolo: string) {
+  //   this.msgOutput.emit(titolo);
+  // }
 
   public formatDate(date: string) {
     return date;

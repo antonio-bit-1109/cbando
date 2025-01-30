@@ -25,7 +25,7 @@
       <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 focused-style">
         <!-- card che riceve la singola ricetta -->
         <app-card-ricetta (warningRefetchUser)="refetchUserData($event)" [arrPreferiti]="this.ArrayPreferitiUtente"
-          [page]="this.page" [ricettaFiglio]="ricetta" (msgOutput)="riceviEvento($event)"></app-card-ricetta>
+          [page]="this.page" [ricettaFiglio]="ricetta"></app-card-ricetta>
       </div>
     </ng-container>
   </div>
