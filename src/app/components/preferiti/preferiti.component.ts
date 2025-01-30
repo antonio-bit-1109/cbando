@@ -85,6 +85,10 @@ export class PreferitiComponent implements OnInit {
           `${ricetta.title}: ${resp.message}`,
           'removePreferiti'
         );
+        // Aggiorna l'array ricette rimuovendo l'elemento eliminato
+        // grazie alla change detection angular rileva le modifiche ad una delle proprità presenti nel dom e refresha il componente di conseguenza
+        // SE VUOI AGGIORNARE IL DOM DOPO UNA MODIFICA, ELIMINA DALLA PROPRIETà CHE OSPITA IL DATO IL DATO CHE HAI APPENA FETCHATO
+        this.ricette = this.ricette.filter((r) => r._id !== ricetta._id);
       },
       error: (err: HttpErrorResponse) => {
         console.log(err.error);
