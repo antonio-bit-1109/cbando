@@ -24,7 +24,7 @@ export class NavbarComponent implements DoCheck {
 
   public user: user | undefined;
 
-  public ricercaText: string | undefined;
+  public ricercaText: string | undefined | null;
   constructor(
     private router: Router,
     public authService: AuthService,
@@ -62,5 +62,14 @@ export class NavbarComponent implements DoCheck {
 
   public avviaRicerca() {
     this.subjectService.fillText(this.ricercaText);
+  }
+
+  public cancellaTestoRicerca() {
+    this.ricercaText = null;
+    this.subjectService.fillText(null);
+  }
+
+  public onSubmit() {
+    this.avviaRicerca();
   }
 }
