@@ -1,4 +1,10 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  AfterViewChecked,
+} from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
@@ -20,6 +26,7 @@ export class PreferitiComponent implements OnInit {
   public arrayPreferiti: string[] | undefined;
   public ricette: IRecipe[] | undefined;
   public hideProgressBar = false;
+  // public clicked: boolean[] | undefined;
   @ViewChild('progressBar') progressBar: ElementRef | undefined;
   constructor(
     private userService: UserService,
@@ -32,6 +39,10 @@ export class PreferitiComponent implements OnInit {
     const email = this.getUserEmail();
     this.getArrayPreferiti(email);
   }
+
+  // ngAfterViewChecked(): void {
+  //   this.clicked = this.clicked.filter((bool) => bool !== false);
+  // }
 
   private getUserEmail() {
     return this.authService.getUserEmail();
@@ -60,6 +71,9 @@ export class PreferitiComponent implements OnInit {
     forkJoin(observableArray).subscribe({
       next: (ricette: IRecipe[]) => {
         this.ricette = ricette;
+        // dopo che ricette è stato popolato creo un array di booleani basato sulla lunghezza di ricette
+        // this.clicked = new Array(this.ricette.length).fill(false);
+        // console.log(this.clicked);
       },
       error: (err) => {
         console.error('errore durante la get di tutti i dettagli ricetta.');
@@ -73,8 +87,10 @@ export class PreferitiComponent implements OnInit {
     return ricetta._id;
   }
 
-  public removePreferiti(ricetta: IRecipe) {
+  public removePreferiti(ricetta: IRecipe, index: number) {
     const userId = this.authService.getUserId();
+
+    // this.clicked[index] = true;
 
     this.userService.removePreferito(userId, ricetta._id).subscribe({
       next: (resp: { message: string }) => {
@@ -88,7 +104,10 @@ export class PreferitiComponent implements OnInit {
         // Aggiorna l'array ricette rimuovendo l'elemento eliminato
         // grazie alla change detection angular rileva le modifiche ad una delle proprità presenti nel dom e refresha il componente di conseguenza
         // SE VUOI AGGIORNARE IL DOM DOPO UNA MODIFICA, ELIMINA DALLA PROPRIETà CHE OSPITA IL DATO IL DATO CHE HAI APPENA FETCHATO
-        this.ricette = this.ricette.filter((r) => r._id !== ricetta._id);
+        setTimeout(() => {
+          this.ricette = this.ricette.filter((r) => r._id !== ricetta._id);
+        }, 800);
+        // this.clicked = this.clicked.filter((bool) => bool !== false);
       },
       error: (err: HttpErrorResponse) => {
         console.log(err.error);
