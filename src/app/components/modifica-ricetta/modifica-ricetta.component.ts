@@ -9,6 +9,7 @@ import {
 } from '../../models/recipes.model';
 import { MessageService } from 'primeng/api';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-modifica-ricetta',
@@ -16,7 +17,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
   templateUrl: './modifica-ricetta.component.html',
   styleUrl: './modifica-ricetta.component.scss',
-  providers: [MessageService],
+  // providers: [MessageService],
 })
 export class ModificaRicettaComponent implements OnInit {
   public title = 'Modifica Ricetta';
@@ -31,13 +32,13 @@ export class ModificaRicettaComponent implements OnInit {
   public prodotto: undefined | IRecipe;
   public id_prodotto: string | undefined;
   public paginaRicetta: string | undefined;
-  keyToast = 'toastEsitoput';
+  // keyToast = 'toastEsitoput';
   // al montaggio del componente ottengo l'id passato nella rotta
   constructor(
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private messageService: MessageService
+    private toastService: ToastService // private messageService: MessageService
   ) {
     const idProdotto = this.activatedRoute.snapshot.paramMap.get('_id');
 
@@ -71,20 +72,22 @@ export class ModificaRicettaComponent implements OnInit {
       .putModificheRicetta(ricettaPut, this.id_prodotto)
       .subscribe({
         next: (resp: Resp_edit_recipe_put) => {
-          this.show(
+          this.toastService.show(
             'success',
             'modifica prodotto',
-            ` prodotto ${resp.title} modificato con successo.`
+            ` prodotto ${resp.title} modificato con successo.`,
+            'toastEsitoput'
           );
           setTimeout(() => {
             this.router.navigateByUrl(`/ricette/${this.paginaRicetta}`);
           }, 2000);
         },
         error: (err: HttpErrorResponse) => {
-          this.show(
+          this.toastService.show(
             'error',
             'modifica prodotto',
-            `errore imprevisto durante la modifica del prodotto. Contattata quello sviluppatore cane che te l'ha fatto.`
+            `errore imprevisto durante la modifica del prodotto. Contattata quello sviluppatore cane che te l'ha fatto.`,
+            'toastEsitoput'
           );
         },
       });
@@ -100,13 +103,13 @@ export class ModificaRicettaComponent implements OnInit {
     });
   }
 
-  show(severity: string, summary: string, detail: string) {
-    this.messageService.add({
-      severity: severity,
-      summary: summary,
-      detail: detail,
-      life: 2000,
-      key: this.keyToast,
-    });
-  }
+  // show(severity: string, summary: string, detail: string) {
+  //   this.messageService.add({
+  //     severity: severity,
+  //     summary: summary,
+  //     detail: detail,
+  //     life: 2000,
+  //     key: this.keyToast,
+  //   });
+  // }
 }

@@ -1,7 +1,7 @@
 <div class="mt-7 mb-5">
     <div class="container">
         <div class="row justify-content-center">
-
+            <p-toast key="removePreferiti" />
 
             <ng-container *ngIf="this.ricette?.length; else noData">
 
@@ -11,8 +11,11 @@
 
                         <!-- singola ricetta -->
                         <div class="card my-2 focused-style">
-                            <div class="card-header">
+                            <div class="card-header d-flex align-items-center">
                                 <h3>{{ricetta.title}}</h3>
+                                <div (click)="removePreferiti(ricetta)" class="ms-auto pointer">
+                                    <i class="pi pi-trash mx-2" style="font-size: 2rem;color: rgb(230, 27, 27)"></i>
+                                </div>
                             </div>
                             <div class="card-body">
                                 <img class=" circle rounded rounded-circle m-2" src="{{ricetta.image}}"

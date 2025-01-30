@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { Iuser } from '../../../models/user.model';
+import { ToastService } from '../../../services/toast.service';
 @Component({
   selector: 'app-registration-reactive-form',
   standalone: false,
@@ -24,7 +25,11 @@ export class RegistrationReactiveFormComponent {
     ripetiPassword: new FormControl('', [Validators.required]),
     accetto: new FormControl(false, [Validators.requiredTrue]),
   });
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router,
+    private toastService: ToastService
+  ) {}
 
   public onSubmit() {
     console.log(this.form.value);
@@ -45,14 +50,28 @@ export class RegistrationReactiveFormComponent {
     this.userService.insertNewUser(dataUser).subscribe({
       next: (resp) => {
         console.log('Dati inviati con successo');
+        this.toastService.show(
+          'success',
+          'registrazione',
+          'Registrazione effettuata con successo',
+          'msgRegister'
+        );
       },
       error: (err) => {
         console.error(err);
+        this.toastService.show(
+          'error',
+          'registrazione',
+          'Errore in fase di registrazione',
+          'msgRegister'
+        );
       },
     });
     // this.userService.datiUtente.next(datiForm);
     // this.router.navigate(['home']);
-    this.router.navigateByUrl('home');
+    setTimeout(() => {
+      this.router.navigateByUrl('home');
+    }, 2000);
   }
 
   public isConfermaPasswordMatch(form: FormGroup) {

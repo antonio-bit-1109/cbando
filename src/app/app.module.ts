@@ -39,6 +39,7 @@ import { ProfiloComponent } from './components/user/profilo/profilo.component';
 import { SharedModule } from './components/shared/shared.module';
 import { DeleteRecipeComponent } from './components/recipes/delete-recipe/delete-recipe.component';
 import { PreferitiComponent } from './components/preferiti/preferiti.component';
+import { MessageService } from 'primeng/api';
 //modulo principale dell applicazione,
 // tutti i componenti e i moduli che vogliamo utilizzare devono essere importati qui
 // in particolare il pacchetto BrowserModule è gia presente di default, aggiungiamo anche BrowserAnimationsModule,
@@ -90,7 +91,7 @@ import { PreferitiComponent } from './components/preferiti/preferiti.component';
     ToastModule,
     SharedModule, // contiene homecomponent e modalecomponent da passare sia ad app che recipe module ('città')
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

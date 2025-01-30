@@ -26,6 +26,8 @@ import { RecipesRoutingModule } from './recipes-routing.module';
 import { HomeComponent } from '../home/home.component';
 import { SharedModule } from '../shared/shared.module';
 import { CheckboxModule } from 'primeng/checkbox';
+import { MessageService } from 'primeng/api';
+import { ToastService } from '../../services/toast.service';
 
 @NgModule({
   //componenti
@@ -70,5 +72,6 @@ import { CheckboxModule } from 'primeng/checkbox';
     DeleteRecipeComponent,
     // CardRicettaComponent,
   ],
+  providers: [MessageService, ToastService],
 })
 export class RecipesModule {}

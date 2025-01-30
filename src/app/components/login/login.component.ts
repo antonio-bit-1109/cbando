@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { IUserDetail } from '../../models/user.model';
 import { MessageService } from 'primeng/api';
+import { ToastService } from '../../services/toast.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import { MessageService } from 'primeng/api';
 
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  providers: [MessageService],
+  // providers: [MessageService],
 })
 export class LoginComponent implements OnDestroy {
   email = '';
@@ -23,7 +24,7 @@ export class LoginComponent implements OnDestroy {
   private TimeOutId;
   // private messageService = inject(MessageService);
 
-  constructor(private messageService: MessageService) {}
+  constructor(private toastService: ToastService) {}
 
   public onSubmit(form) {
     if (form.email !== '' && form.password !== '') {
@@ -32,7 +33,12 @@ export class LoginComponent implements OnDestroy {
           this.user = res;
           if (res) {
             this.authService.saveStorage(res);
-            this.show('success', 'login Effettuato con successo.', 'SUCCESSO');
+            this.toastService.show(
+              'success',
+              'login Effettuato con successo.',
+              'SUCCESSO',
+              'msgLogin'
+            );
             this.TimeOutId = setTimeout(() => {
               this.router.navigateByUrl('/home');
             }, 2000);
@@ -43,21 +49,26 @@ export class LoginComponent implements OnDestroy {
         },
         error: (err) => {
           console.error(err);
-          this.show('error', 'errore in fase di login. Riprova.', 'ERRORE');
+          this.toastService.show(
+            'error',
+            'errore in fase di login. Riprova.',
+            'ERRORE',
+            'msgLogin'
+          );
           this.resetFields();
         },
       });
     }
   }
 
-  show(severity: string, content: string, summary: string) {
-    this.messageService.add({
-      severity: severity,
-      summary: summary,
-      detail: content,
-      key: 'msgLogin',
-    });
-  }
+  // show(severity: string, content: string, summary: string) {
+  //   this.messageService.add({
+  //     severity: severity,
+  //     summary: summary,
+  //     detail: content,
+  //     key: 'msgLogin',
+  //   });
+  // }
 
   ngOnDestroy(): void {
     clearTimeout(this.TimeOutId);
