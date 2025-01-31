@@ -37,7 +37,7 @@
       </ul>
 
       <!-- div con barra di ricerca -->
-      <div class="ms-auto me-4 d-flex" *ngIf="this.authService.isLogged()">
+      <div class="ms-auto me-4 d-flex" *ngIf="this.authService.isLogged() && this.currentRoute?.startsWith('/ricette')">
         <p-button *ngIf="this.ricercaText" icon="pi pi-trash" [rounded]="true" severity="secondary" class="me-2"
           (click)="cancellaTestoRicerca()" />
         <input type="text" pInputText [(ngModel)]="ricercaText" />

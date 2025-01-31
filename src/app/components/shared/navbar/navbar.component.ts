@@ -1,6 +1,6 @@
 import { Component, DoCheck } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SubjectService } from '../../../services/subject.service';
 
 interface user {
@@ -25,11 +25,21 @@ export class NavbarComponent implements DoCheck {
   public user: user | undefined;
 
   public ricercaText: string | undefined | null;
+  public ricercaVisible: boolean = true;
+  public currentRoute: string | undefined;
   constructor(
     private router: Router,
     public authService: AuthService,
     private subjectService: SubjectService
-  ) {}
+  ) {
+    // prelevo dal service il valore della rotta corrente e lo utilizzo per visualizzare in maniera condizionata il campo testo presente nella navbar
+    this.subjectService.$currentRoute.subscribe({
+      next: (currentRoute: string) => {
+        this.currentRoute = currentRoute;
+        console.log('currentroute', this.currentRoute);
+      },
+    });
+  }
 
   // viene chiamato dopo l'init del componente
   // resta in ascolto di eventuali cambiamenti

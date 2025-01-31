@@ -17,6 +17,7 @@ export class DeleteRecipeComponent implements OnInit, OnDestroy {
   public idRicetta: string | undefined;
 
   public idTimeOut;
+  public page: string | undefined;
   constructor(
     private recipeService: RecipeService,
     private activatedRoute: ActivatedRoute,
@@ -27,8 +28,10 @@ export class DeleteRecipeComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const id: string = this.activatedRoute.snapshot.paramMap.get('_id');
     const title: string = this.activatedRoute.snapshot.paramMap.get('title');
+    const page: string = this.activatedRoute.snapshot.paramMap.get('page');
     this.nomeRicetta = title;
     this.idRicetta = id;
+    this.page = page;
     console.log(this.nomeRicetta);
     console.log(this.idRicetta);
   }

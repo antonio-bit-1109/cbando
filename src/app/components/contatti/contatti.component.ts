@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { IDataContatti } from '../../models/dataContatto.model';
+import { Router } from '@angular/router';
+import { SubjectService } from '../../services/subject.service';
 
 @Component({
   selector: 'app-contatti',
@@ -16,6 +18,10 @@ export class ContattiComponent {
     oggetto: new FormControl('', [Validators.required]),
     messaggio: new FormControl('', [Validators.required]),
   });
+
+  constructor(private router: Router, private subjectService: SubjectService) {
+    this.subjectService.setCurrentRoute(this.router.url);
+  }
 
   // metodo richiamato al submit del form
   public onSubmit() {

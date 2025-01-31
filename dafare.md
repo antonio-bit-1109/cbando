@@ -15,3 +15,4 @@
 -[] se aggiorno i preferiti perche anche gli id delle ricette presenti nel servizio non si aggiornano ??
 
 - [] sistemare l aggiunta ai preferiti rendi l aggiornamento del dom sincrono con il click del cuore
+- [] mostra barra ricerca solo se loggato e nella rotta del recipe list

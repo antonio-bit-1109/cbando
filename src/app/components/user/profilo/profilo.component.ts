@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { Iuser, IUserDetail } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
+import { SubjectService } from '../../../services/subject.service';
 
 @Component({
   selector: 'app-profilo',
@@ -16,10 +18,13 @@ export class ProfiloComponent implements OnInit {
   sidebarVisible: boolean = false;
   constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router,
+    private subjectService: SubjectService
   ) {}
 
   ngOnInit(): void {
+    this.subjectService.setCurrentRoute(this.router.url);
     this.userLocalStorage = this.authService.getStorage();
     this.userService.GetDetailUser(this.userLocalStorage.email).subscribe({
       next: (userData) => {

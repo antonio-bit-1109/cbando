@@ -6,8 +6,9 @@
                 <div class="d-flex flex-column align-items-center m-5 p-5">
                     <h2> Stai per cancellare Il prodotto <strong> {{nomeRicetta}}</strong>, sei sicuro ?</h2>
                     <div class="mt-4">
-                        <button routerLink="/ricette/dettaglio/{{idRicetta}}" pButton pRipple label="Torna indietro"
-                            class="p-button-success">
+
+                        <button routerLink="/ricette/dettaglio/{{this.nomeRicetta}}/{{page}}/{{idRicetta}}" pButton
+                            pRipple label="Torna indietro" class="p-button-success">
                         </button>
                         <button (click)="deleteRicetta()" pButton pRipple label="Cancella ricetta"
                             class="p-button-danger">

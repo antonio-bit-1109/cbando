@@ -15,6 +15,8 @@ import { forkJoin, Observable } from 'rxjs';
 import { IRecipe } from '../../models/recipes.model';
 import { ToastService } from '../../services/toast.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { SubjectService } from '../../services/subject.service';
 // import { SubjectService } from '../../services/subject.service';
 
 @Component({
@@ -36,10 +38,13 @@ export class PreferitiComponent implements OnInit {
     private authService: AuthService,
     private recipeService: RecipeService,
     private toastService: ToastService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private router: Router,
+    private subjectService: SubjectService
   ) {}
 
   ngOnInit(): void {
+    this.subjectService.setCurrentRoute(this.router.url);
     this.email = this.getUserEmail();
     this.getArrayPreferiti(this.email);
   }

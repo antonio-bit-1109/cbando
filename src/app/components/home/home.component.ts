@@ -10,6 +10,8 @@ import { IRecipe } from '../../models/recipes.model';
 import { UserService } from '../../services/user.service';
 import { IDataRegistration } from '../../models/dataRegistration.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SubjectService } from '../../services/subject.service';
+import { Router } from '@angular/router';
 // import { ViewChild, ElementRef, ViewChildren } from '@angular/core';
 
 @Component({
@@ -35,8 +37,12 @@ export class HomeComponent implements AfterViewInit {
   constructor(
     private RecipeService: RecipeService,
     private userService: UserService,
-    private ngbModal: NgbModal
+    private ngbModal: NgbModal,
+    private subjectService: SubjectService,
+    private router: Router
   ) {
+    this.subjectService.setCurrentRoute(this.router.url);
+
     this.RecipeService.getRecipes().subscribe({
       next: (response) => {
         this.ricette = this.SortRicetteFromLast_takeOnly4(response);

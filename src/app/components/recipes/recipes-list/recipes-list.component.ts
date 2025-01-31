@@ -5,7 +5,7 @@ import { filter, map, take, first, Observable } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
 import { Iuser, IUserDetail } from '../../../models/user.model';
 import { MessageService } from 'primeng/api';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router, Routes } from '@angular/router';
 import { UserService } from '../../../services/user.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { SubjectService } from '../../../services/subject.service';
@@ -38,6 +38,7 @@ export class RecipesListComponent {
   public esitoPostRicetta: [boolean, string] | null = null;
 
   public ArrayPreferitiUtente: string[] = [];
+  public pageFromURL: number | undefined;
 
   //inietto il servizio nel costruttore del componente
   // inserisco il dato ricevuto dal backend
@@ -45,19 +46,28 @@ export class RecipesListComponent {
   constructor(
     private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
-    private subjectService: SubjectService
+    private subjectService: SubjectService,
+    private router: Router
   ) {
+    // tieni traccia in un servizio della rotta corrente
+    this.subjectService.setCurrentRoute(this.router.url);
+
     const page = this.activatedRoute.snapshot.paramMap.get('page');
 
     if (page && parseInt(page)) {
       this.page = parseInt(page);
+      this.pageFromURL = parseInt(page);
     }
 
     this.getRecipeMethod();
     this.getPreferitiUtente();
     this.subjectService.$subjectText_Observ.subscribe({
-      next: (filterOpt: string) => {
-        this.getRecipeMethod(filterOpt);
+      next: (filterOpt: string | null) => {
+        if (filterOpt) {
+          this.getRecipeMethod(filterOpt);
+        } else {
+          this.getRecipeMethod();
+        }
       },
     });
   }
@@ -116,12 +126,13 @@ export class RecipesListComponent {
       .pipe(
         // take(1)
         map((ricetta) => {
-          if (filterOption) {
+          if (filterOption && filterOption !== '') {
+            this.page = 1;
             return ricetta.filter((ricetta) =>
               ricetta.title.toLowerCase().includes(filterOption.toLowerCase())
             );
           }
-          this.page = 1;
+
           return ricetta;
         })
         //first()  prendi solo la prima chiamata e poi chiude la subscribe
