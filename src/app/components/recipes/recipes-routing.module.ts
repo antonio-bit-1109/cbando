@@ -41,6 +41,12 @@ const routes: Routes = [
     component: ModificaRicettaComponent,
     canActivate: [modificaRicettaGuard],
   },
+
+  // {
+  //   path: 'modificaRicetta/:_id',
+  //   component: ModificaRicettaComponent,
+  //   canActivate: [modificaRicettaGuard],
+  // },
 ];
 
 @NgModule({

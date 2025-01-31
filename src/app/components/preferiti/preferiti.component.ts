@@ -4,6 +4,7 @@ import {
   OnInit,
   ViewChild,
   AfterViewChecked,
+  signal,
 } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
 import { UserService } from '../../services/user.service';
@@ -13,6 +14,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { forkJoin, Observable } from 'rxjs';
 import { IRecipe } from '../../models/recipes.model';
 import { ToastService } from '../../services/toast.service';
+import { ChangeDetectorRef } from '@angular/core';
 // import { SubjectService } from '../../services/subject.service';
 
 @Component({
@@ -26,23 +28,21 @@ export class PreferitiComponent implements OnInit {
   public arrayPreferiti: string[] | undefined;
   public ricette: IRecipe[] | undefined;
   public hideProgressBar = false;
-  // public clicked: boolean[] | undefined;
+  public email = null;
+
   @ViewChild('progressBar') progressBar: ElementRef | undefined;
   constructor(
     private userService: UserService,
     private authService: AuthService,
     private recipeService: RecipeService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    const email = this.getUserEmail();
-    this.getArrayPreferiti(email);
+    this.email = this.getUserEmail();
+    this.getArrayPreferiti(this.email);
   }
-
-  // ngAfterViewChecked(): void {
-  //   this.clicked = this.clicked.filter((bool) => bool !== false);
-  // }
 
   private getUserEmail() {
     return this.authService.getUserEmail();
@@ -74,6 +74,7 @@ export class PreferitiComponent implements OnInit {
         // dopo che ricette è stato popolato creo un array di booleani basato sulla lunghezza di ricette
         // this.clicked = new Array(this.ricette.length).fill(false);
         // console.log(this.clicked);
+        this.cdr.detectChanges();
       },
       error: (err) => {
         console.error('errore durante la get di tutti i dettagli ricetta.');
@@ -104,9 +105,7 @@ export class PreferitiComponent implements OnInit {
         // Aggiorna l'array ricette rimuovendo l'elemento eliminato
         // grazie alla change detection angular rileva le modifiche ad una delle proprità presenti nel dom e refresha il componente di conseguenza
         // SE VUOI AGGIORNARE IL DOM DOPO UNA MODIFICA, ELIMINA DALLA PROPRIETà CHE OSPITA IL DATO IL DATO CHE HAI APPENA FETCHATO
-        setTimeout(() => {
-          this.ricette = this.ricette.filter((r) => r._id !== ricetta._id);
-        }, 800);
+        this.getArrayPreferiti(this.email);
         // this.clicked = this.clicked.filter((bool) => bool !== false);
       },
       error: (err: HttpErrorResponse) => {
