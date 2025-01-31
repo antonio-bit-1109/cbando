@@ -37,7 +37,7 @@ const routes: Routes = [
     canActivate: [deleteRicettaGuard],
   },
   {
-    path: 'modificaRicetta/:page/:_id',
+    path: 'modificaRicetta/:title/:page/:_id',
     component: ModificaRicettaComponent,
     canActivate: [modificaRicettaGuard],
   },

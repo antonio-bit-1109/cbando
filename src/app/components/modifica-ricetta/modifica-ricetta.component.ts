@@ -32,6 +32,7 @@ export class ModificaRicettaComponent implements OnInit {
   public prodotto: undefined | IRecipe;
   public id_prodotto: string | undefined;
   public paginaRicetta: string | undefined;
+  public titoloRicetta: string | undefined;
   // keyToast = 'toastEsitoput';
   // al montaggio del componente ottengo l'id passato nella rotta
   constructor(
@@ -43,7 +44,7 @@ export class ModificaRicettaComponent implements OnInit {
     const idProdotto = this.activatedRoute.snapshot.paramMap.get('_id');
 
     this.paginaRicetta = this.activatedRoute.snapshot.paramMap.get('page');
-
+    this.titoloRicetta = this.activatedRoute.snapshot.paramMap.get('title');
     this.id_prodotto = idProdotto;
     this.recipeService.getDetailRicetta(idProdotto).subscribe({
       next: (ricetta) => {
@@ -103,6 +104,11 @@ export class ModificaRicettaComponent implements OnInit {
     });
   }
 
+  public goBack() {
+    this.router.navigateByUrl(
+      `/ricette/dettaglio/${this.titoloRicetta}/${this.paginaRicetta}/${this.id_prodotto}`
+    );
+  }
   // show(severity: string, summary: string, detail: string) {
   //   this.messageService.add({
   //     severity: severity,

@@ -17,7 +17,7 @@
               <i class="pi pi-trash" style="font-size: 1rem"></i>
               <p class="fw-bold fs-6 m-0">Elimina</p>
             </button>
-            <button routerLink="/ricette/modificaRicetta/{{idPaginaDoveStaRicetta}}/{{ricetta._id}}"
+            <button routerLink="/ricette/modificaRicetta/{{ricetta.title}}/{{idPaginaDoveStaRicetta}}/{{ricetta._id}}"
               *ngIf="isLoggedAndAdmin()" class="btn btn-info p-2 position-absolute coordinate1 p-2">
               <i class="pi pi-pencil" style="font-size: 1rem; color: white"></i>
               <p class="fw-bold fs-6 m-0 text-light">Modifica </p>

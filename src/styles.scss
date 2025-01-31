@@ -57,3 +57,13 @@ body {
 .border-my-color {
   border: 2px solid $primary-color-1 !important;
 }
+
+.arrow-color {
+  color: $primary-color-1;
+  font-size: 5rem;
+  margin-block-start: 2rem;
+}
+
+.arrow-color:hover {
+  color: $secondary-color-1;
+}
